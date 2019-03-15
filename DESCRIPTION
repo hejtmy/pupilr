@@ -6,6 +6,10 @@ Author: "Lukáš 'hejtmy' Hejtmánek""
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Loading, preprocessing, visualising and exporting data recorded with
     the pupil labs eyetracker
-License:  MIT
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat
