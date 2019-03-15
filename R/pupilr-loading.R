@@ -1,11 +1,12 @@
 #' Title
 #'
-#' @param dir
+#' @param dir directory to load
 #'
-#' @return
+#' @return PupilrObject
 #' @export
 #'
 #' @examples
 load_folder <- function(dir){
-
+  obj <- PupilrObject()
+  return(obj)
 }
