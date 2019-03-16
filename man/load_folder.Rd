@@ -2,13 +2,16 @@
 % Please edit documentation in R/pupilr-loading.R
 \name{load_folder}
 \alias{load_folder}
-\title{Title}
+\title{Loads all important exported objecs from given folder}
 \usage{
 load_folder(dir)
 }
 \arguments{
-\item{dir}{}
+\item{dir}{directory to load}
+}
+\value{
+PupilrObject
 }
 \description{
-Title
+Loads all important exported objecs from given folder
 }

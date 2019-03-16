@@ -1,6 +1,6 @@
 #' Loads all important exported objecs from given folder
 #'
-#' @param dir directory to load
+#' @param dir directory with the exported data
 #'
 #' @return PupilrObject
 #' @export
@@ -13,7 +13,7 @@ load_folder <- function(dir){
 
 #' Finds and loads info file from given directory
 #'
-#' @param dir directory in which to search
+#' @param dir directory with the exported data
 #'
 #' @return loaded info data.frame
 #' @export
@@ -25,7 +25,7 @@ open_info_file <- function(dir){
 
 #' Retusns gaze positions data frame
 #'
-#' @param dir
+#' @param dir directory with the exported data
 #'
 #' @return data.frame with loaded gaze positions
 #' @export
@@ -38,7 +38,7 @@ open_gaze_file <- function(dir){
 
 #' Returns data frame of pupil positions
 #'
-#' @param dir
+#' @param dir directory with the exported data
 #'
 #' @return data.frame with loaded pupil positions
 #' @export
@@ -50,7 +50,7 @@ open_positions_file <- function(dir){
 
 #' Returns data frame of world_timestamps
 #'
-#' @param dir
+#' @param dir directory with the exported data
 #'
 #' @return data.frame with loaded timestamps
 #' @export
@@ -60,8 +60,22 @@ open_timestamps_file <- function(dir){
   return(open_exported_file(dir, "world_timestamps.csv"))
 }
 
+#' Searches for the surfaces and tries to load them into a list
+#'
+#' @param dir directory with the exported data
+#'
+#' @return list with surfaces and their definitions
+#' @export
+#'
+#' @examples
 open_surfaces <- function(dir){
   path <- find_single_file(dir, "surfaces")
+  if(!is.null(path)) return(load_surfaces(path))
+  return(NULL)
+}
+
+load_surfaces <- function(path){
+  return(list(a = NULL))
 }
 
 #' General function to load preprocessed file based on pattern
