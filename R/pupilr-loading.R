@@ -32,7 +32,7 @@ open_info_file <- function(dir){
 #'
 #' @examples
 open_gaze_file <- function(dir){
-  return(open_exported_file(dir,"_gaze.csv"))
+  return(open_exported_file(dir,"gaze_positions.csv"))
 }
 
 
@@ -60,6 +60,10 @@ open_timestamps_file <- function(dir){
   return(open_exported_file(dir, "world_timestamps.csv"))
 }
 
+open_surfaces <- function(dir){
+  path <- find_single_file(dir, "surfaces")
+}
+
 #' General function to load preprocessed file based on pattern
 #'
 #' @param dir where to look for the data.frame csv
@@ -72,7 +76,6 @@ open_timestamps_file <- function(dir){
 open_exported_file <- function(dir, ptr){
   path <- find_single_file(dir, ptr)
   if(!is.null(path)) return(load_exported_file(path))
-  warning("No file of pattern ", ptr, " found, returning NULL")
   return(NULL)
 }
 
