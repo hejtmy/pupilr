@@ -69,13 +69,33 @@ open_timestamps_file <- function(dir){
 #'
 #' @examples
 open_surfaces <- function(dir){
-  path <- find_single_file(dir, "surfaces")
-  if(!is.null(path)) return(load_surfaces(path))
+  surface_dir <- find_single_file(dir, "surfaces")
+  if(!is.null(surface_dir)) return(load_surface_data(surface_dir))
   return(NULL)
 }
 
-load_surfaces <- function(path){
-  return(list(a = NULL))
+load_surface_data <- function(dir){
+  ls <- list()
+  ls$data <- list()
+  # loads events
+  ls$data$events <- open_exported_file(dir, "surface_events")
+  #gets all fixation files
+  surfaces <- list.files(dir, "fixations_on_surface")
+  #extracts name
+  surfaces_names <- sub("fixations_on_surface_(.*?)_(.*)[.]csv", "\\1", surfaces)
+  surfaces_times <- sub("fixations_on_surface_(.*?)_(.*)[.]csv", "\\2", surfaces)
+  for(i in 1:length(surfaces_names)){
+    surface_name <- surfaces_names[i]
+    surface_timestamp <- surfaces_times[i]
+    fix_filepath <- file.path(dir, paste0("fixations_on_surface_", surface_name, "_", surface_timestamp, ".csv"))
+    fixations <- load_exported_file(fix_filepath)
+    gaze_filepath <- file.path(dir, paste0("gaze_positions_on_surface_", surface_name, "_", surface_timestamp, ".csv"))
+    gaze <- load_exported_file(gaze_filepath)
+    surface_filepath <- file.path(dir, paste0("srf_positons_", surface_name, "_", surface_timestamp, ".csv"))
+    surface_positions <- load_exported_file(surface_filepath)
+    ls[[surface_name]] <- list(fixations=fixations, gaze=gaze, surface_positions=surface_positions, timestamp = surface_timestamp)
+  }
+  return(ls)
 }
 
 #' General function to load preprocessed file based on pattern
