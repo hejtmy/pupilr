@@ -94,6 +94,7 @@ load_surface_data <- function(dir){
     surface_filepath <- file.path(dir, paste0("srf_positons_", surface_name, "_", surface_timestamp, ".csv"))
     surface_positions <- load_exported_file(surface_filepath)
     ls[[surface_name]] <- list(fixations=fixations, gaze=gaze, surface_positions=surface_positions, timestamp = surface_timestamp)
+    class(ls[[surface_name]]) <- append(class(ls), "surface")
   }
   return(ls)
 }
