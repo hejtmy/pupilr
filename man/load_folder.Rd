@@ -7,7 +7,7 @@
 load_folder(dir)
 }
 \arguments{
-\item{dir}{directory to load}
+\item{dir}{directory with the exported data}
 }
 \value{
 PupilrObject

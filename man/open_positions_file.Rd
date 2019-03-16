@@ -7,7 +7,7 @@
 open_positions_file(dir)
 }
 \arguments{
-\item{dir}{}
+\item{dir}{directory with the exported data}
 }
 \value{
 data.frame with loaded pupil positions

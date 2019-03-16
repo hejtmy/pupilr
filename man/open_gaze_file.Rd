@@ -7,7 +7,7 @@
 open_gaze_file(dir)
 }
 \arguments{
-\item{dir}{}
+\item{dir}{directory with the exported data}
 }
 \value{
 data.frame with loaded gaze positions

@@ -7,7 +7,7 @@
 open_info_file(dir)
 }
 \arguments{
-\item{dir}{directory in which to search}
+\item{dir}{directory with the exported data}
 }
 \value{
 loaded info data.frame

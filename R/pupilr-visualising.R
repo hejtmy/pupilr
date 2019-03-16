@@ -16,11 +16,10 @@ plot_gaze_heatmap <- function(obj){
 }
 
 plot_gaze_heatmap.surface <- function(obj){
+  #require  ggplot
   gz <- obj$gaze
   gz <- gz[gz$on_srf =="True", ]
-
   ggplot(gz, aes(x_norm, y_norm)) +
-    #geom_bin2d(binwidth = 1/100) +
     stat_density2d(aes(fill = ..level..), geom = "polygon") +
     scale_fill_viridis_c() +
     xlim(0,1) + ylim(0,1)
