@@ -1,3 +1,9 @@
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
 plot_gaze <- function(){
   UseMethod("plot_gaze")
 }
@@ -15,6 +21,14 @@ plot_gaze_heatmap <- function(obj){
   UseMethod("plot_gaze_heatmap")
 }
 
+#' PLots heatmap of a surface object
+#'
+#' @param obj object of type surface
+#'
+#' @return ggplot of stat density type with given limits
+#' @export
+#'
+#' @examples
 plot_gaze_heatmap.surface <- function(obj){
   #require  ggplot
   gz <- obj$gaze

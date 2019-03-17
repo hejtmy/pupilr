@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Visualising data"
+author: "Lukáš 'hejtmy' Hejtmánek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -14,8 +14,11 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+```
+
+```{r}
 library(pupilr)
-sf <- load_surface_data("../tests/test-data/surfaces")
+sf <- open_surfaces("../tests/test-data")
 ```
 
 ```{r}
