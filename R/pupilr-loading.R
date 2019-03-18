@@ -74,6 +74,14 @@ open_surfaces <- function(dir){
   return(NULL)
 }
 
+#' Loads folder with surface data
+#'
+#' @param dir path to the folder
+#'
+#' @return
+#' @export
+#'
+#' @examples
 load_surface_data <- function(dir){
   ls <- list()
   ls$data <- list()
