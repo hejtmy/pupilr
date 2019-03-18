@@ -1,6 +1,11 @@
+#Documentation
 inst/doc
+
 ## Test data temporarily
 tests/test-data
+
+## Playground file to quickly test and play with files and test code
+playground.R
 
 # History files
 .Rhistory
