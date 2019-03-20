@@ -23,7 +23,7 @@ get_gaze <- function(obj, ...){
 #' @examples
 get_gaze.surface <- function(obj, on_surface = T, ...){
   gaze <- obj$gaze
-  if(on_surface) gaze <- gaze[gaze$on_srf == "True",]
+  if(on_surface) gaze <- gaze[gaze$on_srf == "True", ]
   return(gaze)
 }
 
@@ -35,20 +35,30 @@ get_gaze.surface <- function(obj, on_surface = T, ...){
 #' @export
 #'
 #' @examples
-get_gaze_timewindow <- function(obj, ...){
+get_gaze_timewindow <- function(obj, start, end, ...){
+  if(any(c(missing(start), missing(end)))) stop("start and end need to be defned")
   UseMethod("get_gaze_timewindow")
 }
 
-#' Title
+#' returns gaze data.frame between given times
 #'
-#' @param obj
+#' @param obj surface object
+#' @param start start time in seconds (numeric)
+#' @param end end time in seconds (numeric)
+#' @param since_start defaults to false
 #' @param ... optional parameters, same as in get_gaze
 #'
-#' @return
+#' @return filtered data.frame
 #' @export
 #'
 #' @examples
-get_gaze_timewindow.surface <- function(obj, ...){
+#' gaze <- get_gaze_timewindow(surface_object, 1000, 1200, on_surface = F)
+get_gaze_timewindow.surface <- function(obj, start, end, since_start = F, ...){
+  if(any(!is.numeric(c(start, end)))) stop('start and end needs to be numeric')
   gaze <- get_gaze.surface(obj, ...)
+  #TODO - check for gaze to be present?
+  timestamps <- gaze$world_timestamp
+  if(since_start) timestamps <- timestamps - timestamps[1]
+  gaze <- gaze[timestamps > start & timestamps < end, ]
   return(gaze)
 }
