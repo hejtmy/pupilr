@@ -11,7 +11,7 @@ filter_times(main_surface, 0, 500, since_start = T, on_surface = T)
 plot_gaze_heatmap(main_surface)
 ```
 
-##Installation
+## Installation
 
 ## What the package does?
 Pupilr loads and preprocesses exported data from the pupil labs eyetracker for easy visualisation and analysis. It expects certain format to be present, as is defined by the pupil labs export functions. 
