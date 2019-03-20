@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface • pupilr</title>
+<title>Removes measurements which are not on given surface — remove_not_on_surface • pupilr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface" />
+<meta property="og:title" content="Removes measurements which are not on given surface — remove_not_on_surface" />
 
-<meta property="og:description" content="Allows changing of the world timestamps or real timestamps start to a specific time" />
+<meta property="og:description" content="Removes measurements which are not on given surface" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,49 +106,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows changing of the world timestamps or real timestamps start to a specific time</h1>
+    <h1>Removes measurements which are not on given surface</h1>
     
-    <div class="hidden name"><code>change_timestamps_start.surface.Rd</code></div>
+    <div class="hidden name"><code>remove_not_on_surface.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Allows changing of the world timestamps or real timestamps start to a specific time</p>
+    <p>Removes measurements which are not on given surface</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for surface</span>
-<span class='fu'><a href='change_timestamps_start.html'>change_timestamps_start</a></span>(<span class='no'>obj</span>, <span class='no'>start_time</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>obj</th>
-      <td><p>object which timestamps should be recomputed</p></td>
-    </tr>
-    <tr>
-      <th>start_time</th>
-      <td><p>needs %H:%M:%S parameter to be passed</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <pre class="usage"><span class='fu'>remove_not_on_surface</span>(<span class='no'>obj</span>)</pre>
+        
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>As the world_timestamps are a useful feature but not representative
-of the real timestamps, you can use this function to recompute their start based
-of concrete number. Typically, thi is the start as is saved in the info.csv file
-in the recording. This function therefore takes that formated number a<!-- %H:%M:%S -->
-and recomputes the times in the wordl_timestamps so they start at given time</p>
+    <p>modified object</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
+      <li><a href="#value">Value</a></li>
           </ul>
 
   </div>

@@ -2,13 +2,22 @@
 % Please edit documentation in R/pupilr-preprocessing.R
 \name{change_timestamps_start.surface}
 \alias{change_timestamps_start.surface}
-\title{So far changes ONLY GAZE property}
+\title{Allows changing of the world timestamps or real timestamps start to a specific time}
 \usage{
 \method{change_timestamps_start}{surface}(obj, start_time)
 }
 \arguments{
-\item{start_time}{}
+\item{obj}{object which timestamps should be recomputed}
+
+\item{start_time}{needs \%H:\%M:\%S parameter to be passed}
 }
 \description{
-So far changes ONLY GAZE property
+Allows changing of the world timestamps or real timestamps start to a specific time
+}
+\details{
+As the world_timestamps are a useful feature but not representative
+of the real timestamps, you can use this function to recompute their start based
+of concrete number. Typically, thi is the start as is saved in the info.csv file
+in the recording. This function therefore takes that formated number a%H:%M:%S
+and recomputes the times in the wordl_timestamps so they start at given time
 }

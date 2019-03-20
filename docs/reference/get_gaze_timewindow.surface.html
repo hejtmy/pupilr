@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface • pupilr</title>
+<title>returns gaze data.frame between given times — get_gaze_timewindow.surface • pupilr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface" />
+<meta property="og:title" content="returns gaze data.frame between given times — get_gaze_timewindow.surface" />
 
-<meta property="og:description" content="Allows changing of the world timestamps or real timestamps start to a specific time" />
+<meta property="og:description" content="returns gaze data.frame between given times" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,50 +106,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows changing of the world timestamps or real timestamps start to a specific time</h1>
+    <h1>returns gaze data.frame between given times</h1>
     
-    <div class="hidden name"><code>change_timestamps_start.surface.Rd</code></div>
+    <div class="hidden name"><code>get_gaze_timewindow.surface.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Allows changing of the world timestamps or real timestamps start to a specific time</p>
+    <p>returns gaze data.frame between given times</p>
     
     </div>
 
     <pre class="usage"><span class='co'># S3 method for surface</span>
-<span class='fu'><a href='change_timestamps_start.html'>change_timestamps_start</a></span>(<span class='no'>obj</span>, <span class='no'>start_time</span>)</pre>
+<span class='fu'><a href='get_gaze_timewindow.html'>get_gaze_timewindow</a></span>(<span class='no'>obj</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='kw'>since_start</span> <span class='kw'>=</span> <span class='no'>F</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>object which timestamps should be recomputed</p></td>
+      <td><p>surface object</p></td>
     </tr>
     <tr>
-      <th>start_time</th>
-      <td><p>needs %H:%M:%S parameter to be passed</p></td>
+      <th>start</th>
+      <td><p>start time in seconds (numeric)</p></td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td><p>end time in seconds (numeric)</p></td>
+    </tr>
+    <tr>
+      <th>since_start</th>
+      <td><p>defaults to false</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>optional parameters, same as in get_gaze</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>As the world_timestamps are a useful feature but not representative
-of the real timestamps, you can use this function to recompute their start based
-of concrete number. Typically, thi is the start as is saved in the info.csv file
-in the recording. This function therefore takes that formated number a<!-- %H:%M:%S -->
-and recomputes the times in the wordl_timestamps so they start at given time</p>
+    <p>filtered data.frame</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>gaze</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_gaze_timewindow.html'>get_gaze_timewindow</a></span>(<span class='no'>surface_object</span>, <span class='fl'>1000</span>, <span class='fl'>1200</span>, <span class='kw'>on_surface</span> <span class='kw'>=</span> <span class='no'>F</span>)</div><div class='output co'>#&gt; <span class='error'>Error in get_gaze_timewindow(surface_object, 1000, 1200, on_surface = F): object 'surface_object' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

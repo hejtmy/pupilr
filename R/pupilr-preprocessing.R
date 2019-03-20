@@ -1,13 +1,13 @@
 #' Allows changing of the world timestamps or real timestamps start to a specific time
 #'
-#' @description As the world_timestamps are a useful feature but not representative
+#' @details As the world_timestamps are a useful feature but not representative
 #' of the real timestamps, you can use this function to recompute their start based
 #' of concrete number. Typically, thi is the start as is saved in the info.csv file
 #' in the recording. This function therefore takes that formated number a%H:%M:%S
 #' and recomputes the times in the wordl_timestamps so they start at given time
 #'
 #' @param obj object which timestamps should be recomputed
-#' @param start_time needs %H:%M:%S parameter to be passed
+#' @param start_time needs \%H:\%M:\%S parameter to be passed
 #' @param ...
 #'
 #' @return
@@ -18,10 +18,16 @@ change_timestamps_start <- function(obj, start_time, ...){
   UseMethod("change_timestamps_start")
 }
 
-#' So far changes ONLY GAZE property
+#' Allows changing of the world timestamps or real timestamps start to a specific time
 #'
-#' @param obj
-#' @param start_time
+#' @details As the world_timestamps are a useful feature but not representative
+#' of the real timestamps, you can use this function to recompute their start based
+#' of concrete number. Typically, thi is the start as is saved in the info.csv file
+#' in the recording. This function therefore takes that formated number a%H:%M:%S
+#' and recomputes the times in the wordl_timestamps so they start at given time
+#'
+#' @param obj object which timestamps should be recomputed
+#' @param start_time needs \%H:\%M:\%S parameter to be passed
 #'
 #' @return
 #' @export

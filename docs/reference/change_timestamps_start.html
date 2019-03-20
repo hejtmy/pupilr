@@ -31,6 +31,8 @@
 
 
 <meta property="og:title" content="Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start" />
+
+<meta property="og:description" content="Allows changing of the world timestamps or real timestamps start to a specific time" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,7 +112,9 @@
     </div>
 
     <div class="ref-description">
-
+    
+    <p>Allows changing of the world timestamps or real timestamps start to a specific time</p>
+    
     </div>
 
     <pre class="usage"><span class='fu'>change_timestamps_start</span>(<span class='no'>obj</span>, <span class='no'>start_time</span>, <span class='no'>...</span>)</pre>
@@ -124,10 +128,21 @@
     </tr>
     <tr>
       <th>start_time</th>
-      <td><p>needs <!-- %H:%M:%S parameter to be passed} --></p>
-<p>...</p></td>
+      <td><p>needs %H:%M:%S parameter to be passed</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>As the world_timestamps are a useful feature but not representative
+of the real timestamps, you can use this function to recompute their start based
+of concrete number. Typically, thi is the start as is saved in the info.csv file
+in the recording. This function therefore takes that formated number a<!-- %H:%M:%S -->
+and recomputes the times in the wordl_timestamps so they start at given time</p>
     
 
   </div>
@@ -135,7 +150,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

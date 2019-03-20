@@ -9,11 +9,14 @@ change_timestamps_start(obj, start_time, ...)
 \arguments{
 \item{obj}{object which timestamps should be recomputed}
 
-\item{start_time}{needs %H:%M:%S parameter to be passed}
+\item{start_time}{needs \%H:\%M:\%S parameter to be passed}
 
 \item{...}{}
 }
 \description{
+Allows changing of the world timestamps or real timestamps start to a specific time
+}
+\details{
 As the world_timestamps are a useful feature but not representative
 of the real timestamps, you can use this function to recompute their start based
 of concrete number. Typically, thi is the start as is saved in the info.csv file
