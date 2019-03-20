@@ -37,3 +37,27 @@ change_timestamps_start.surface <- function(obj, start_time){
   obj$gaze$world_timestamp <- new_timestamps
   return(obj)
 }
+
+#' Removes measurements which are not on given surface
+#'
+#' @param obj
+#' @return modified object
+#' @export
+remove_not_on_surface <- function(obj){
+  UseMethod("remove_not_on_surface")
+}
+
+#' Removes measurements which are not on given surface
+#'
+#' @param obj surface object
+#'
+#' @return modified object
+#' @export
+#'
+#' @examples
+remove_not_on_surface.surface <- function(obj){
+  obj$gaze <- obj$gaze[obj$gaze$on_srf == "True", ]
+  return(obj)
+}
+
+
