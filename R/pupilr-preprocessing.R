@@ -67,3 +67,35 @@ remove_not_on_surface.surface <- function(obj){
 }
 
 
+#' Filters out object with only times between start and end
+#'
+#' @param obj object to be modified
+#' @param start start time in seconds
+#' @param end end time in seconds
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+filter_times <- function(obj, start, end, ...){
+  UseMethod("filter_times")
+}
+
+#' Filters out only times between start and end
+#'
+#' @param obj surface object
+#' @param start start time in seconds
+#' @param end end time in seconds
+#' @param ... optional parameters just like in get_gaze, get_fixations (e.g. on_surface)
+#'
+#' @return surface object with filtered out times
+#' @export
+#'
+#' @examples
+filter_times.surface <- function(obj, start, end, ...){
+  gaze <- get_gaze_timewindow(obj, start, end, ...)
+  obj$gaze <- gaze
+  return(obj)
+}
+

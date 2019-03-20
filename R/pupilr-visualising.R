@@ -31,9 +31,24 @@ plot_gaze_heatmap <- function(obj){
 #' @examples
 plot_gaze_heatmap.surface <- function(obj){
   #require  ggplot
-  gz <- obj$gaze
-  gz <- gz[gz$on_srf =="True", ]
-  ggplot(gz, aes(x_norm, y_norm)) +
+  gz <- get_gaze.surface(obj)
+  plot_eye_heatmap(gz$x_norm, gz$y_norm)
+}
+
+
+#' Generic function to plot eye heatmap given passed x and y coordinates
+#'
+#' @param x x coordinates
+#' @param y y coordinates
+#'
+#' @return ggplot og stat density
+#' @export
+#'
+#' @examples
+plot_eye_heatmap <- function(x, y){
+  #validate - x and y same length
+  df <- data.frame(x, y)
+  ggplot(df, aes(x, y)) +
     stat_density2d(aes(fill = ..level..), geom = "polygon") +
     scale_fill_viridis_c() +
     xlim(0,1) + ylim(0,1)

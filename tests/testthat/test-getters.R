@@ -11,7 +11,7 @@ test_that("getting surface gaze works", {
   expect_lt(nrow(df_gaze), nrow(df_gaze_full))
 })
 
-test_that("filtering surface timewingow works", {
+test_that("filtering surface timewindow works", {
   expect_error(get_gaze_timewindow(sf$unnamed, 1000))
   gaze <- get_gaze_timewindow(sf$unnamed, 0, 1000)
   expect_equal(nrow(gaze), 0)
