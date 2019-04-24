@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface • pupilr</title>
+<title>Filters out object with only times between start and end — filter_times • pupilr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface" />
+<meta property="og:title" content="Filters out object with only times between start and end — filter_times" />
 
-<meta property="og:description" content="Allows changing of the world timestamps or real timestamps start to a specific time" />
+<meta property="og:description" content="Filters out object with only times between start and end" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,40 +106,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows changing of the world timestamps or real timestamps start to a specific time</h1>
+    <h1>Filters out object with only times between start and end</h1>
     
-    <div class="hidden name"><code>change_timestamps_start.surface.Rd</code></div>
+    <div class="hidden name"><code>filter_times.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Allows changing of the world timestamps or real timestamps start to a specific time</p>
+    <p>Filters out object with only times between start and end</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for surface</span>
-<span class='fu'><a href='change_timestamps_start.html'>change_timestamps_start</a></span>(<span class='no'>obj</span>, <span class='no'>start_time</span>)</pre>
+    <pre class="usage"><span class='fu'>filter_times</span>(<span class='no'>obj</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>object which timestamps should be recomputed</p></td>
+      <td><p>object to be modified</p></td>
     </tr>
     <tr>
-      <th>start_time</th>
-      <td><p>needs %H:%M:%OS parameter to be passed. see strptime for details</p></td>
+      <th>start</th>
+      <td><p>start time in seconds</p></td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td><p>end time in seconds</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>As the world_timestamps are a useful feature but not representative
-of the real timestamps, you can use this function to recompute their start based
-of concrete number. Typically, thi is the start as is saved in the info.csv file
-in the recording. This function therefore takes that formated number a<!-- %H:%M:%S -->
-and recomputes the times in the wordl_timestamps so they start at given time</p>
     
 
   </div>
@@ -147,9 +146,7 @@ and recomputes the times in the wordl_timestamps so they start at given time</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

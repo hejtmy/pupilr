@@ -27,7 +27,7 @@ change_timestamps_start <- function(obj, start_time, ...){
 #' and recomputes the times in the wordl_timestamps so they start at given time
 #'
 #' @param obj object which timestamps should be recomputed
-#' @param start_time needs \%H:\%M:\%S parameter to be passed
+#' @param start_time needs \%H:\%M:\%OS parameter to be passed. see strptime for details
 #'
 #' @return
 #' @export
@@ -36,9 +36,7 @@ change_timestamps_start <- function(obj, start_time, ...){
 change_timestamps_start.surface <- function(obj, start_time){
   timestamps <- obj$gaze$world_timestamp
   first_timestamp <- timestamps[1]
-  first_timestamp_ms <- first_timestamp - round(first_timestamp)
-  time_since_midnight <- as.numeric(as.difftime(c(start_time, "0:0:0"), "%H:%M:%S", units = "secs"))[1] +
-    first_timestamp_ms
+  time_since_midnight <- as.numeric(as.difftime(c(start_time, "0:0:0"), "%H:%M:%OS", units = "secs"))[1]
   new_timestamps <- time_since_midnight + timestamps - first_timestamp
   obj$gaze$world_timestamp <- new_timestamps
   return(obj)
@@ -87,7 +85,7 @@ filter_times <- function(obj, start, end, ...){
 #' @param obj surface object
 #' @param start start time in seconds
 #' @param end end time in seconds
-#' @param ... optional parameters just like in get_gaze, get_fixations (e.g. on_surface)
+#' @param ... optional parameters just like in get_gaze_timewindow, get_fixations (e.g. on_surface)
 #'
 #' @return surface object with filtered out times
 #' @export

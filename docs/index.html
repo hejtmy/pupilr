@@ -70,8 +70,38 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-Loading, preprocessing, visualising and exporting data recorded with
-    the pupil labs eyetracker
+<div id="pupilr" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#pupilr" class="anchor"></a>pupilr</h1></div>
+<p>R package to working with Pupil labs eyetracker data in R.</p>
+<div id="example-code" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-code" class="anchor"></a>Example code</h2>
+<pre><code>library(pupilr)
+sf &lt;- open_surfaces("path_to_your_exported_data")
+main_surface &lt;- sf$main
+plot_gaze_heatmap(main_surface)
+filter_times(main_surface, 0, 500, since_start = T, on_surface = T)
+plot_gaze_heatmap(main_surface)</code></pre>
+</div>
+<div id="what-the-package-does" class="section level2">
+<h2 class="hasAnchor">
+<a href="#what-the-package-does" class="anchor"></a>What the package does?</h2>
+<p>Pupilr loads and preprocesses exported data from the pupil labs eyetracker for easy visualisation and analysis. It expects certain format to be present, as is defined by the pupil labs export functions.</p>
+<p>Pupilr offers ways to synchronise world timestamps, clear out surface data, filter data based on timestamps, and uses ggplot for quick and easy visualisations.</p>
+</div>
+<div id="requirements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#requirements" class="anchor"></a>Requirements</h2>
+<p>The package visualisation at this point is based on ggplot2. Pupilr also at this point expects the data to be “Exported” through pupil labs player or command line and loads ONLY exported data. Reading and preprocessing raw data is technically possible, but especially as the surface data are concerned, it is just simpler to load already prepared files by pupil pipeline.</p>
+</div>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>At this point <code>pupilr</code> is not on CRAN, but can be installed using devtools or other tools allowing to install packages from github</p>
+<pre><code><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">devtools::install_github("hejtmy/pupilr")</a></code></pre>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

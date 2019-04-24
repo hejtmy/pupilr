@@ -13,7 +13,7 @@
 
 \item{end}{end time in seconds}
 
-\item{...}{optional parameters just like in get_gaze, get_fixations (e.g. on_surface)}
+\item{...}{optional parameters just like in get_gaze_timewindow, get_fixations (e.g. on_surface)}
 }
 \value{
 surface object with filtered out times

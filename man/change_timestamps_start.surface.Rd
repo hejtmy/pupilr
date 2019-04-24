@@ -9,7 +9,7 @@
 \arguments{
 \item{obj}{object which timestamps should be recomputed}
 
-\item{start_time}{needs \%H:\%M:\%S parameter to be passed}
+\item{start_time}{needs \%H:\%M:\%OS parameter to be passed. see strptime for details}
 }
 \description{
 Allows changing of the world timestamps or real timestamps start to a specific time

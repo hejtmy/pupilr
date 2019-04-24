@@ -4,6 +4,7 @@ sf <- open_surfaces(DIR)
 
 test_that("reseting times", {
   expect_silent(unnamed_new <- change_timestamps_start(sf$unnamed, "01:54:02"))
+  expect_silent(unnamed_new <- change_timestamps_start(sf$unnamed, "01:54:02.100"))
 })
 
 test_that("filtering times", {
