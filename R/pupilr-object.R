@@ -1,4 +1,5 @@
-#' Title
+#' Pupilr object
+#' @description
 #'
 #' @return
 #' @export

@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: "Lukáš 'hejtmy' Hejtmánek""
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Loading, preprocessing, visualising and exporting data recorded with
-    the pupil labs eyetracker
+    the pupil labs eyetracker. Depends on the hejtmy/eyer package for plotting 
 License: MIT
 Encoding: UTF-8
 LazyData: true
@@ -14,4 +14,7 @@ RoxygenNote: 6.1.1
 Suggests: 
     testthat
 Depends: 
-    ggplot2
+    ggplot2,
+    eyer
+Remotes:
+  hejtmy/eyer

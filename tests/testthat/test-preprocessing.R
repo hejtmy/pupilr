@@ -8,6 +8,6 @@ test_that("reseting times", {
 })
 
 test_that("filtering times", {
-  filtered <- filter_times(sf$unnamed, 0,1000, on_surface = T, since_start = T)
+  filtered <- filter_times(sf$unnamed, 0, 1000, on_surface = T, since_start = T)
   expect_gt(nrow(sf$unnamed$gaze), nrow(filtered$gaze))
 })

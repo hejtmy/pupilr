@@ -8,7 +8,6 @@ plot_gaze <- function(){
   UseMethod("plot_gaze")
 }
 
-
 #' Plots heatmap of the gaze data
 #'
 #' @param obj either pupilr object or surface object

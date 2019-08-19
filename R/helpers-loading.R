@@ -1,6 +1,6 @@
 load_exported_file <- function(path){
   # validate path
-  df <- read.table(path, sep=",", header=T, stringsAsFactors = F)
+  df <- read.table(path, sep = ",", header = T, stringsAsFactors = F)
   return(df)
 }
 
