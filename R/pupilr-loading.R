@@ -15,12 +15,16 @@ load_folder <- function(folder){
 #'
 #' @param folder directory with the exported data
 #'
-#' @return loaded info data.frame
+#' @return list with exported_info file contents
 #' @export
 #'
 #' @examples
 open_info_file <- function(folder){
-  return(open_exported_file(folder,"_info.csv"))
+  df <- open_exported_file(folder, "_info.csv")
+  values <- df$value
+  names(values) <- df$key
+  ls <- as.list(values)
+  return(ls)
 }
 
 #' Retusns gaze positions data frame
@@ -32,7 +36,7 @@ open_info_file <- function(folder){
 #'
 #' @examples
 open_gaze_file <- function(folder){
-  return(open_exported_file(folder,"gaze_positions.csv"))
+  return(open_exported_file(folder, "gaze_positions.csv"))
 }
 
 #' Returns data frame of pupil positions
