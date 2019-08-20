@@ -57,7 +57,7 @@ get_gaze_timewindow.surface.item <- function(obj, start, end, since_start = F, .
   if(any(!is.numeric(c(start, end)))) stop('start and end needs to be numeric')
   gaze <- get_gaze.surface.item(obj, ...)
   #TODO - check for gaze to be present?
-  timestamps <- gaze$world_timestamp
+  timestamps <- gaze$gaze_timestamp
   if(since_start) timestamps <- timestamps - timestamps[1]
   gaze <- gaze[timestamps > start & timestamps < end, ]
   return(gaze)

@@ -8,10 +8,16 @@ test_that("reseting times", {
 })
 
 test_that("filtering times", {
-  filtered <- filter_times(sf$items$unnamed, 0, 1000, on_surface = T, since_start = T)
-  expect_gt(nrow(sf$items$unnamed$gaze), nrow(filtered$data$gaze))
+  filtered <- filter_times(sf$items$unnamed, 0, 10, on_surface = T, since_start = T)
+  expect_gt(nrow(sf$items$unnamed$data$gaze), nrow(filtered$data$gaze))
 })
 
 test_that("preprocessing surfaces", {
 
+})
+
+test_that("Eyer conversions", {
+  eye <- convert_to_eyer(sf$items$unnamed)
+  expect_s3_class(eye, "eyer")
+  expect_true(all(c("x", "y", "time") %in% names(eye$data$fixations)))
 })

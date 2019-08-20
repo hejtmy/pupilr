@@ -99,7 +99,7 @@ open_surfaces <- function(folder){
 #' Loads folder with surface data
 #'
 #' @param folder path to the folder
-#' @param preprocess: if the data should be immediately cleaned. default T
+#' @param preprocess: if the data should be immediately cleaned. default T. If set to false, some filtering and plotting functions will not work
 #'
 #' @return
 #' @export

@@ -34,11 +34,11 @@ change_timestamps_start <- function(obj, start_time, ...){
 #'
 #' @examples
 change_timestamps_start.surface.item <- function(obj, start_time){
-  timestamps <- obj$data$gaze$world_timestamp
+  timestamps <- obj$data$gaze$gaze_timestamp
   first_timestamp <- timestamps[1]
   time_since_midnight <- as.numeric(as.difftime(c(start_time, "0:0:0"), "%H:%M:%OS", units = "secs"))[1]
   new_timestamps <- time_since_midnight + timestamps - first_timestamp
-  obj$data$gaze$world_timestamp <- new_timestamps
+  obj$data$gaze$gaze_timestamp <- new_timestamps
   return(obj)
 }
 
@@ -92,24 +92,66 @@ filter_times <- function(obj, start, end, ...){
 #' @examples
 filter_times.surface.item <- function(obj, start, end, ...){
   gaze <- get_gaze_timewindow(obj, start, end, ...)
-  obj$gaze <- gaze
+  obj$data$gaze <- gaze
   return(obj)
 }
 
 ## EYER CONVERTIONS ----
+#' Converts given object to an eyer object
+#'
+#' @param obj
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
 convert_to_eyer <- function(obj, ...){
   UseMethod("convert_to_eyer")
 }
 
-convert_to_eyer.surface.item <- function(obj, ...){
 
+#' Converts surface item to an eyer object
+#'
+#' @param obj surface.item object
+#' @param ...
+#'
+#' @return EyerObject
+#' @export
+#'
+#' @examples
+convert_to_eyer.surface.item <- function(obj, ...){
+  eye <- EyerObject()
+  eye$eyetracker <- "PupilLabs"
+  eye$start_time <- obj$data$gaze$gaze_timestamp[1]
+
+  # GAZE
+  gaze <- obj$data$gaze
+  gaze$time <- gaze$gaze_timestamp - eye$start_time
+  gaze <- rename_column(gaze, "x_norm", "x")
+  gaze <- rename_column(gaze, "y_norm", "y")
+  gaze[, c("world_timestamp", "world_index", "gaze_timestamp")] <- NULL
+  eye$data$gaze <- gaze
+
+  # FIZATIONS
+  fixations <- obj$data$fixations
+  fixations$time <- fixations$start_timestamp - eye$start_time
+  fixations[, c("fixations_id", "start_timestamp")] <- NULL
+  fixations <- rename_column(fixations, "norm_pos_x", "x")
+  fixations <- rename_column(fixations, "norm_pos_y", "y")
+  eye$data$fixations <- fixations
+  return(eye)
 }
 
 ### NON PUBLIC -----
 preprocess.surface.item <- function(obj, ...){
-  colnames(obj$data$fixations)[colnames(obj$data$fixations) %in% c("on_surf", "on_srf")] <- "on_surface"
-  colnames(obj$data$gaze)[colnames(obj$data$gaze) %in% c("on_surf", "on_srf")] <- "on_surface"
-  obj$data$fixations$on_surface <- obj$data$fixations$on_surface == "True"
-  obj$data$gaze$on_surface <- obj$data$gaze$on_surface == "True"
+  prep_d <- function(df){
+    df <- rename_column(df, c("on_surf", "on_srf"), "on_surface")
+    df$on_surface <- df$on_surface == "True"
+    if (all(df$norm_pos_x - df$x_scaled == 0)) df[,c("x_scaled", "y_scaled")] <- NULL
+    return(df)
+  }
+  obj$data$fixations <- prep_d(obj$data$fixations)
+  obj$data$gaze <- prep_d(obj$data$gaze)
   return(obj)
 }
