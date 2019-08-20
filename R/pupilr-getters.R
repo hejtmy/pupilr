@@ -21,9 +21,9 @@ get_gaze <- function(obj, ...){
 #' @export
 #'
 #' @examples
-get_gaze.surface <- function(obj, on_surface = T, ...){
-  gaze <- obj$gaze
-  if(on_surface) gaze <- gaze[gaze$on_srf == "True", ]
+get_gaze.surface.item <- function(obj, on_surface = T, ...){
+  gaze <- obj$data$gaze
+  if(on_surface) gaze <- gaze[gaze$on_surface, ]
   return(gaze)
 }
 
@@ -53,9 +53,9 @@ get_gaze_timewindow <- function(obj, start, end, ...){
 #'
 #' @examples
 #' gaze <- get_gaze_timewindow(surface_object, 1000, 1200, on_surface = F)
-get_gaze_timewindow.surface <- function(obj, start, end, since_start = F, ...){
+get_gaze_timewindow.surface.item <- function(obj, start, end, since_start = F, ...){
   if(any(!is.numeric(c(start, end)))) stop('start and end needs to be numeric')
-  gaze <- get_gaze.surface(obj, ...)
+  gaze <- get_gaze.surface.item(obj, ...)
   #TODO - check for gaze to be present?
   timestamps <- gaze$world_timestamp
   if(since_start) timestamps <- timestamps - timestamps[1]

@@ -4,10 +4,10 @@
 \alias{open_surfaces}
 \title{Searches for the surfaces and tries to load them into a list}
 \usage{
-open_surfaces(dir)
+open_surfaces(folder)
 }
 \arguments{
-\item{dir}{directory with the exported data}
+\item{folder}{directory with the exported data}
 }
 \value{
 list with surfaces and their definitions

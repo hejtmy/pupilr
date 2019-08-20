@@ -4,10 +4,10 @@
 \alias{open_exported_file}
 \title{General function to load preprocessed file based on pattern}
 \usage{
-open_exported_file(dir, ptr)
+open_exported_file(folder, ptr)
 }
 \arguments{
-\item{dir}{where to look for the data.frame csv}
+\item{folder}{where to look for the data.frame csv}
 
 \item{ptr}{patten to search for}
 }

@@ -20,10 +20,24 @@ PupilrObject <- function(){
 #' @export
 #'
 #' @examples
-SurfaceObject <- function(){
+SurfacesObject <- function(){
   ls <- list()
   ls$data <- list()
   ls$items <- list()
-  class(ls) <-append(class(ls), "surface")
+  class(ls) <-append(class(ls), "surfaces")
+  return(ls)
+}
+
+
+#' Creates surface item object
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SurfaceItemObject <- function(){
+  ls <- list()
+  ls$data <- list()
+  class(ls) <-append(class(ls), "surface.item")
   return(ls)
 }

@@ -4,10 +4,10 @@
 \alias{open_positions_file}
 \title{Returns data frame of pupil positions}
 \usage{
-open_positions_file(dir)
+open_positions_file(folder)
 }
 \arguments{
-\item{dir}{directory with the exported data}
+\item{folder}{directory with the exported data}
 }
 \value{
 data.frame with loaded pupil positions

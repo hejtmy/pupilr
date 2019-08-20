@@ -28,12 +28,11 @@ plot_gaze_heatmap <- function(obj){
 #' @export
 #'
 #' @examples
-plot_gaze_heatmap.surface <- function(obj){
+plot_gaze_heatmap.surface.item <- function(obj){
   #require  ggplot
-  gz <- get_gaze.surface(obj)
+  gz <- get_gaze.surface.item(obj)
   plot_eye_heatmap(gz$x_norm, gz$y_norm)
 }
-
 
 #' Generic function to plot eye heatmap given passed x and y coordinates
 #'

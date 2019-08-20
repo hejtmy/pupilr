@@ -4,13 +4,13 @@
 \alias{open_info_file}
 \title{Finds and loads info file from given directory}
 \usage{
-open_info_file(dir)
+open_info_file(folder)
 }
 \arguments{
-\item{dir}{directory with the exported data}
+\item{folder}{directory with the exported data}
 }
 \value{
-loaded info data.frame
+list with exported_info file contents
 }
 \description{
 Finds and loads info file from given directory

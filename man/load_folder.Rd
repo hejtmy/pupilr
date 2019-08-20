@@ -4,10 +4,10 @@
 \alias{load_folder}
 \title{Loads all important exported objecs from given folder}
 \usage{
-load_folder(dir)
+load_folder(folder)
 }
 \arguments{
-\item{dir}{directory with the exported data}
+\item{folder}{directory with the exported data}
 }
 \value{
 PupilrObject

@@ -17,7 +17,8 @@ test_that("finding files work", {
 test_that("loading surfaces", {
   expect_silent(ls <- open_surfaces(DIR))
   expect_type(ls, "list")
-  expect_s3_class(ls$unnamed, "surface")
+  expect_s3_class(ls, "surfaces")
+  expect_s3_class(ls$items$unnamed, "surface.item")
 })
 
 test_that("loading exported csv", {

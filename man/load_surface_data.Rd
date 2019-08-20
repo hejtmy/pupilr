@@ -4,10 +4,12 @@
 \alias{load_surface_data}
 \title{Loads folder with surface data}
 \usage{
-load_surface_data(dir)
+load_surface_data(folder, preprocess = T)
 }
 \arguments{
-\item{dir}{path to the folder}
+\item{folder}{path to the folder}
+
+\item{preprocess:}{if the data should be immediately cleaned. default T}
 }
 \description{
 Loads folder with surface data

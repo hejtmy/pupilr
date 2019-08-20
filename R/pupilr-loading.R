@@ -99,18 +99,17 @@ open_surfaces <- function(folder){
 #' Loads folder with surface data
 #'
 #' @param folder path to the folder
-#' @param with_timestamps: do the surface names contain timestamp? Old exports do, the ones after v 1.13 don't
+#' @param preprocess: if the data should be immediately cleaned. default T
 #'
 #' @return
 #' @export
 #'
 #' @examples
-load_surface_data <- function(folder, with_timestamps = T){
-  ls <- list()
-  ls$data <- list()
+load_surface_data <- function(folder, preprocess = T){
+  ls <- SurfacesObject()
   # loads events
   ls$data$events <- open_exported_file(folder, "surface_events")
-  #gets all fixation files
+  # gets all fixation files
   surfaces <- list.files(folder, "fixations_on_surface")
   # POssible names have or don't have timestamps in them
   # fixations_on_surface_unnamed_1552524777.3223464.csv
@@ -121,21 +120,31 @@ load_surface_data <- function(folder, with_timestamps = T){
     surface_name <- surfaces_names[i]
     surface_timestamp <- surfaces_times[i]
     if(nchar(surface_timestamp) > 1) surface_timestamp <- paste0("_", surface_timestamp)
+
     fix_filepath <- file.path(folder, paste0("fixations_on_surface_", surface_name, surface_timestamp, ".csv"))
     fixations <- load_exported_file(fix_filepath)
     gaze_filepath <- file.path(folder, paste0("gaze_positions_on_surface_", surface_name, surface_timestamp, ".csv"))
     gaze <- load_exported_file(gaze_filepath)
-    # A bit awkward but the exports changed preposition srf to surf and who knows what it is going to be in the future
+
+     # A bit awkward but the exports changed preposition srf to surf and who knows what it is going to be in the future
     positions_file_ptr <- paste0("_positions_", surface_name, surface_timestamp, ".csv")
     surface_filepath <- list.files(folder, positions_file_ptr, full.names = T)[1]
+
     if(is.na(surface_filepath)) {
       warning("there isn't a ", positions_file_ptr, " file in the surfaces folder")
-      surface_positions <- NULL
+      positions <- NULL
     } else {
-      surface_positions <- load_exported_file(surface_filepath)
+      positions <- load_exported_file(surface_filepath)
     }
-    ls[[surface_name]] <- list(fixations=fixations, gaze=gaze, surface_positions=surface_positions, timestamp = surface_timestamp)
-    class(ls[[surface_name]]) <- append(class(ls), "surface")
+
+    surface <- SurfaceItemObject()
+    surface$data <- list(fixations = fixations,
+                         gaze = gaze,
+                         positions = positions)
+    surface$timestamp <- surface_timestamp
+    if(preprocess) surface <- preprocess.surface.item(surface)
+
+    ls$items[[surface_name]] <- surface
   }
   return(ls)
 }

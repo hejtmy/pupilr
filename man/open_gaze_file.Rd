@@ -4,10 +4,10 @@
 \alias{open_gaze_file}
 \title{Retusns gaze positions data frame}
 \usage{
-open_gaze_file(dir)
+open_gaze_file(folder)
 }
 \arguments{
-\item{dir}{directory with the exported data}
+\item{folder}{directory with the exported data}
 }
 \value{
 data.frame with loaded gaze positions

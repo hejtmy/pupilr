@@ -4,10 +4,10 @@
 \alias{open_timestamps_file}
 \title{Returns data frame of world_timestamps}
 \usage{
-open_timestamps_file(dir)
+open_timestamps_file(folder)
 }
 \arguments{
-\item{dir}{directory with the exported data}
+\item{folder}{directory with the exported data}
 }
 \value{
 data.frame with loaded timestamps
