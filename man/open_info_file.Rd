@@ -2,16 +2,16 @@
 % Please edit documentation in R/pupilr-loading.R
 \name{open_info_file}
 \alias{open_info_file}
-\title{Finds and loads info file from given directory}
+\title{Finds and loads \code{info.csv} file from given directory}
 \usage{
 open_info_file(folder)
 }
 \arguments{
-\item{folder}{directory with the exported data}
+\item{folder}{directory with the `info.csv`` file}
 }
 \value{
-list with exported_info file contents
+list with info file contents
 }
 \description{
-Finds and loads info file from given directory
+Finds and loads \code{info.csv} file from given directory
 }

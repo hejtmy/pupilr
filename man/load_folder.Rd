@@ -10,7 +10,7 @@ load_folder(folder)
 \item{folder}{directory with the exported data}
 }
 \value{
-PupilrObject
+\code{\link{PupilrObject}}
 }
 \description{
 Loads all important exported objecs from given folder

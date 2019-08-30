@@ -26,7 +26,10 @@ test_that("loading exported csv", {
   expect_silent(ls <- open_gaze_file(DIR))
   expect_type(ls, "list")
   #info
-  expect_silent(ls <- open_info_file(DIR))
+  expect_warning(ls <- open_info_file(DIR))
+  expect_true(is.null(ls))
+  # exported info
+  expect_silent(ls <- open_expoted_info_file(DIR))
   expect_type(ls, "list")
   #positions
   expect_silent(ls <- open_positions_file(DIR))

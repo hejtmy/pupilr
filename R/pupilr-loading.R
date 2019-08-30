@@ -2,20 +2,36 @@
 #'
 #' @param folder directory with the exported data
 #'
-#' @return PupilrObject
+#' @return \code{\link{PupilrObject}}
 #' @export
 #'
 #' @examples
 load_folder <- function(folder){
   obj <- PupilrObject()
-  obj$export_info <- open_info_file(folder)
+  obj$export_info <- open_expoted_info_file(folder)
+  obj$info <- open_info_file(folder)
   obj$data$gaze <- open_gaze_file(folder)
   obj$data$fixations <- open_fixations_file(folder)
   obj$surfaces <- open_surfaces(folder)
   return(obj)
 }
 
-#' Finds and loads info file from given directory
+#' Finds and loads `info.csv` file from given directory
+#'
+#' @param folder directory with the `info.csv`` file
+#'
+#' @return list with info file contents
+#' @export
+#'
+#' @examples
+open_info_file <- function(folder){
+  pth <- find_single_file(folder, "^info.csv$")
+  ls <- load_key_value_file(pth)
+  return(ls)
+}
+
+
+#' Finds and loads `exported_info.csv` file from given directory
 #'
 #' @param folder directory with the exported data
 #'
@@ -23,11 +39,9 @@ load_folder <- function(folder){
 #' @export
 #'
 #' @examples
-open_info_file <- function(folder){
-  df <- open_exported_file(folder, "_info.csv")
-  values <- df$value
-  names(values) <- df$key
-  ls <- as.list(values)
+open_expoted_info_file <- function(folder){
+  pth <- find_single_file(folder, "_info.csv")
+  ls <- load_key_value_file(pth)
   return(ls)
 }
 
@@ -164,3 +178,20 @@ open_exported_file <- function(folder, ptr){
   return(NULL)
 }
 
+#' Function to read pupil key, value style dataframes into named list
+#'
+#' @description Loads the dataframe and returns named list
+#' @param filepath path to the file
+#'
+#' @return loaded named list
+#' @export
+#'
+#' @examples
+load_key_value_file <- function(filepath){
+  if(is.null(filepath)) return(NULL)
+  df <- load_exported_file(filepath)
+  values <- df$value
+  names(values) <- df$key
+  ls <- as.list(values)
+  return(ls)
+}
