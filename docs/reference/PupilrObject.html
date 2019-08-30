@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Title — PupilrObject • pupilr</title>
+<title>Pupilr object definition — PupilrObject • pupilr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,14 @@
 
 
 
-<meta property="og:title" content="Title — PupilrObject" />
+<meta property="og:title" content="Pupilr object definition — PupilrObject" />
 
-<meta property="og:description" content="Title" />
+<meta property="og:description" content="Pupilr object is a list with class pupilr with three main fields
+info: contains eyetracker settings embedded in the info.csv. This file is generally not in the export folder, btt in the main recording folder and needs to be moved
+export_info: contains list with export information
+data: loaded gata from the exported folder. Genrally contains fields fixations, gaze, pupil
+surfaces: contains a list with SurfaceObjects, one for each exported surface.
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -86,7 +91,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/visualising.html">Visualising data</a>
+      <a href="../articles/loading.html">Loading data</a>
     </li>
   </ul>
 </li>
@@ -106,25 +111,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Title</h1>
+    <h1>Pupilr object definition</h1>
     
     <div class="hidden name"><code>PupilrObject.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Title</p>
+    <p>Pupilr object is a list with class pupilr with three main fields</p><ul>
+<li><p>info: contains eyetracker settings embedded in the info.csv. This file is generally not in the export folder, btt in the main recording folder and needs to be moved</p></li>
+<li><p>export_info: contains list with export information</p></li>
+<li><p>data: loaded gata from the exported folder. Genrally contains fields fixations, gaze, pupil</p></li>
+<li><p>surfaces: contains a list with <code>SurfaceObjects</code>, one for each exported surface.</p></li>
+</ul>
     
     </div>
 
     <pre class="usage"><span class='fu'>PupilrObject</span>()</pre>
         
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>object of class <code>pupilr</code></p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

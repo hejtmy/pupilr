@@ -1,5 +1,5 @@
 ---
-title: "Visualising data"
+title: "Loading data"
 author: "Lukáš 'hejtmy' Hejtmánek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -19,8 +19,4 @@ knitr::opts_chunk$set(
 ```{r}
 library(pupilr)
 sf <- open_surfaces("../tests/test-data")
-```
-
-```{r}
-plot_gaze_heatmap(sf$unnamed)
 ```

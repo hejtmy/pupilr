@@ -2,10 +2,19 @@
 % Please edit documentation in R/pupilr-object.R
 \name{PupilrObject}
 \alias{PupilrObject}
-\title{Pupilr object}
+\title{Pupilr object definition}
 \usage{
 PupilrObject()
 }
+\value{
+object of class \code{pupilr}
+}
 \description{
-Pupilr object
+Pupilr object is a list with class pupilr with three main fields
+\itemize{
+\item info: contains eyetracker settings embedded in the info.csv. This file is generally not in the export folder, btt in the main recording folder and needs to be moved
+\item export_info: contains list with export information
+\item data: loaded gata from the exported folder. Genrally contains fields fixations, gaze, pupil
+\item surfaces: contains a list with \code{SurfaceObjects}, one for each exported surface.
+}
 }

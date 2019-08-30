@@ -2,10 +2,20 @@
 % Please edit documentation in R/pupilr-object.R
 \name{SurfacesObject}
 \alias{SurfacesObject}
-\title{Creates surface object}
+\title{Creates surfaces object}
 \usage{
 SurfacesObject()
 }
+\value{
+object of class \code{surfaces}
+}
 \description{
-Creates surface object
+Surfaces object contains basic data from the surfaces folder
+(generally events table with information about surfaces enter adn exit).
+
+SurfaceObject:
+\itemize{
+\item data: data about all surfaces together
+\item items: list with named field for each surface containig `SurfaceItemObject``
+}
 }

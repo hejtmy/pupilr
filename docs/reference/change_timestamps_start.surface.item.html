@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Finds and loads info file from given directory — open_info_file • pupilr</title>
+<title>Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface.item • pupilr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Finds and loads info file from given directory — open_info_file" />
+<meta property="og:title" content="Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start.surface.item" />
 
-<meta property="og:description" content="Finds and loads info file from given directory" />
+<meta property="og:description" content="Allows changing of the world timestamps or real timestamps start to a specific time" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,31 +106,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Finds and loads info file from given directory</h1>
+    <h1>Allows changing of the world timestamps or real timestamps start to a specific time</h1>
     
-    <div class="hidden name"><code>open_info_file.Rd</code></div>
+    <div class="hidden name"><code>change_timestamps_start.surface.item.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Finds and loads info file from given directory</p>
+    <p>Allows changing of the world timestamps or real timestamps start to a specific time</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>open_info_file</span>(<span class='no'>folder</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for surface.item</span>
+<span class='fu'><a href='change_timestamps_start.html'>change_timestamps_start</a></span>(<span class='no'>obj</span>, <span class='no'>start_time</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>folder</th>
-      <td><p>directory with the exported data</p></td>
+      <th>obj</th>
+      <td><p>object which timestamps should be recomputed</p></td>
+    </tr>
+    <tr>
+      <th>start_time</th>
+      <td><p>needs %H:%M:%OS parameter to be passed. see strptime for details</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>list with exported_info file contents</p>
+    <p>As the world_timestamps are a useful feature but not representative
+of the real timestamps, you can use this function to recompute their start based
+of concrete number. Typically, thi is the start as is saved in the info.csv file
+in the recording. This function therefore takes that formated number a<!-- %H:%M:%S -->
+and recomputes the times in the wordl_timestamps so they start at given time</p>
     
 
   </div>
@@ -139,7 +148,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>
