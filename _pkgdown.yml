@@ -1,0 +1,43 @@
+reference:
+- title: Object definitions
+  desc: Pupilr, surfaces object definitions
+  contents:
+  - '`PupilrObject`'
+  - '`SurfaceItemObject`'
+  - '`SurfacesObject`'
+
+- title: Loading
+  desc: functions to load pupil data
+  contents:
+  - '`load_folder`'
+  - '`load_surface_data`'
+  - '`open_surfaces`'
+  - '`open_exported_file`'
+  - '`open_expoted_info_file`'
+  - '`open_fixations_file`'
+  - '`open_gaze_file`'
+  - '`open_info_file`'
+  - '`open_positions_file`'
+  - '`open_timestamps_file`'
+  - '`load_key_value_file`'
+- title: Preprocessing
+  desc:
+  contents:
+  - '`change_timestamps_start`'
+  - '`change_timestamps_start.surface.item`'
+  - '`convert_to_eyer`'
+  - '`convert_to_eyer.surface.item`'
+  - '`remove_not_on_surface`'
+  - '`remove_not_on_surface.surface`'
+- title: Getters
+  desc: Functions  to access parts of objects
+  contents:
+  - '`get_gaze`'
+  - '`get_gaze.surface.item`'
+  - '`get_gaze_timewindow`'
+  - '`get_gaze_timewindow.surface.item`'
+  - '`filter_times`'
+  - '`filter_times.surface.item`'
+
+
+
