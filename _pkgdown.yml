@@ -5,7 +5,6 @@ reference:
   - '`PupilrObject`'
   - '`SurfaceItemObject`'
   - '`SurfacesObject`'
-
 - title: Loading
   desc: functions to load pupil data
   contents:
@@ -25,8 +24,8 @@ reference:
   contents:
   - '`change_timestamps_start`'
   - '`change_timestamps_start.surface.item`'
-  - '`convert_to_eyer`'
-  - '`convert_to_eyer.surface.item`'
+  - '`as.eyer`'
+  - '`as.eyer.surface.item`'
   - '`remove_not_on_surface`'
   - '`remove_not_on_surface.surface`'
 - title: Getters

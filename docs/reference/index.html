@@ -117,7 +117,107 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-object-definitions" class="hasAnchor"><a href="#section-object-definitions" class="anchor"></a>Object definitions</h2>
+          <p class="section-desc"><p>Pupilr, surfaces object definitions</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="PupilrObject.html">PupilrObject()</a></code> </p>
+        </td>
+        <td><p>Pupilr object definition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SurfaceItemObject.html">SurfaceItemObject()</a></code> </p>
+        </td>
+        <td><p>Creates surface.item object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SurfacesObject.html">SurfacesObject()</a></code> </p>
+        </td>
+        <td><p>Creates surfaces object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-loading" class="hasAnchor"><a href="#section-loading" class="anchor"></a>Loading</h2>
+          <p class="section-desc"><p>functions to load pupil data</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="load_folder.html">load_folder()</a></code> </p>
+        </td>
+        <td><p>Loads all important exported objecs from given folder</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_surface_data.html">load_surface_data()</a></code> </p>
+        </td>
+        <td><p>Loads folder with surface data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_surfaces.html">open_surfaces()</a></code> </p>
+        </td>
+        <td><p>Searches for the surfaces and tries to load them into a list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_exported_file.html">open_exported_file()</a></code> </p>
+        </td>
+        <td><p>General function to load preprocessed file based on pattern</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_expoted_info_file.html">open_expoted_info_file()</a></code> </p>
+        </td>
+        <td><p>Finds and loads <code>exported_info.csv</code> file from given directory</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_fixations_file.html">open_fixations_file()</a></code> </p>
+        </td>
+        <td><p>Retusns fixations data.frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_gaze_file.html">open_gaze_file()</a></code> </p>
+        </td>
+        <td><p>Retusns gaze positions data frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_info_file.html">open_info_file()</a></code> </p>
+        </td>
+        <td><p>Finds and loads <code>info.csv</code> file from given directory</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_positions_file.html">open_positions_file()</a></code> </p>
+        </td>
+        <td><p>Returns data frame of pupil positions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_timestamps_file.html">open_timestamps_file()</a></code> </p>
+        </td>
+        <td><p>Returns data frame of world_timestamps</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_key_value_file.html">load_key_value_file()</a></code> </p>
+        </td>
+        <td><p>Function to read pupil key, value style dataframes into named list</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-preprocessing" class="hasAnchor"><a href="#section-preprocessing" class="anchor"></a>Preprocessing</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -148,16 +248,24 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="filter_times.html">filter_times()</a></code> </p>
+          <p><code><a href="remove_not_on_surface.html">remove_not_on_surface()</a></code> </p>
         </td>
-        <td><p>Filters out object with only times between start and end</p></td>
+        <td><p>Removes measurements which are not on given surface</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="filter_times.surface.item.html">filter_times(<i>&lt;surface.item&gt;</i>)</a></code> </p>
+          <p><code><a href="remove_not_on_surface.surface.html">remove_not_on_surface(<i>&lt;surface&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Filters out only times between start and end</p></td>
-      </tr><tr>
+        <td><p>Removes measurements which are not on given surface</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-getters" class="hasAnchor"><a href="#section-getters" class="anchor"></a>Getters</h2>
+          <p class="section-desc"><p>Functions to access parts of objects</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="get_gaze.html">get_gaze()</a></code> </p>
@@ -184,111 +292,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="load_folder.html">load_folder()</a></code> </p>
+          <p><code><a href="filter_times.html">filter_times()</a></code> </p>
         </td>
-        <td><p>Loads all important exported objecs from given folder</p></td>
+        <td><p>Filters out object with only times between start and end</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="load_surface_data.html">load_surface_data()</a></code> </p>
+          <p><code><a href="filter_times.surface.item.html">filter_times(<i>&lt;surface.item&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Loads folder with surface data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_exported_file.html">open_exported_file()</a></code> </p>
-        </td>
-        <td><p>General function to load preprocessed file based on pattern</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_fixations_file.html">open_fixations_file()</a></code> </p>
-        </td>
-        <td><p>Retusns fixations data.frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_gaze_file.html">open_gaze_file()</a></code> </p>
-        </td>
-        <td><p>Retusns gaze positions data frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_info_file.html">open_info_file()</a></code> </p>
-        </td>
-        <td><p>Finds and loads info file from given directory</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_positions_file.html">open_positions_file()</a></code> </p>
-        </td>
-        <td><p>Returns data frame of pupil positions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_surfaces.html">open_surfaces()</a></code> </p>
-        </td>
-        <td><p>Searches for the surfaces and tries to load them into a list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_timestamps_file.html">open_timestamps_file()</a></code> </p>
-        </td>
-        <td><p>Returns data frame of world_timestamps</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_eye_heatmap.html">plot_eye_heatmap()</a></code> </p>
-        </td>
-        <td><p>Generic function to plot eye heatmap given passed x and y coordinates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_gaze.html">plot_gaze()</a></code> </p>
-        </td>
-        <td><p>Title</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_gaze_heatmap.html">plot_gaze_heatmap()</a></code> </p>
-        </td>
-        <td><p>Plots heatmap of the gaze data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_gaze_heatmap.surface.item.html">plot_gaze_heatmap(<i>&lt;surface.item&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>PLots heatmap of a surface object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="PupilrObject.html">PupilrObject()</a></code> </p>
-        </td>
-        <td><p>Pupilr object definition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_not_on_surface.html">remove_not_on_surface()</a></code> </p>
-        </td>
-        <td><p>Removes measurements which are not on given surface</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_not_on_surface.surface.html">remove_not_on_surface(<i>&lt;surface&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Removes measurements which are not on given surface</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SurfaceItemObject.html">SurfaceItemObject()</a></code> </p>
-        </td>
-        <td><p>Creates surface.item object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SurfacesObject.html">SurfacesObject()</a></code> </p>
-        </td>
-        <td><p>Creates surfaces object</p></td>
+        <td><p>Filters out only times between start and end</p></td>
       </tr>
     </tbody>
     </table>
@@ -297,7 +309,10 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-object-definitions">Object definitions</a></li>
+      <li><a href="#section-loading">Loading</a></li>
+      <li><a href="#section-preprocessing">Preprocessing</a></li>
+      <li><a href="#section-getters">Getters</a></li>
     </ul>
   </div>
 </div>

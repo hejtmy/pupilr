@@ -30,7 +30,6 @@ open_info_file <- function(folder){
   return(ls)
 }
 
-
 #' Finds and loads `exported_info.csv` file from given directory
 #'
 #' @param folder directory with the exported data
