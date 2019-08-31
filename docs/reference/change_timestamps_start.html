@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start • pupilr</title>
+<title>Changes timestamps to a given start time — change_timestamps_start • pupilr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Allows changing of the world timestamps or real timestamps start to a specific time — change_timestamps_start" />
+<meta property="og:title" content="Changes timestamps to a given start time — change_timestamps_start" />
 
-<meta property="og:description" content="Allows changing of the world timestamps or real timestamps start to a specific time" />
+<meta property="og:description" content="As the world_timestamps/gaze timestamps are a useful feature but not representative
+of the real PC timestamps, you can use this function to recompute their start based
+to a specific number." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,14 +113,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows changing of the world timestamps or real timestamps start to a specific time</h1>
+    <h1>Changes timestamps to a given start time</h1>
     <small class="dont-index">Source: <a href='https://github.com/hejtmy/pupilr/blob/master/R/pupilr-preprocessing.R'><code>R/pupilr-preprocessing.R</code></a></small>
     <div class="hidden name"><code>change_timestamps_start.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Allows changing of the world timestamps or real timestamps start to a specific time</p>
+    <p>As the world_timestamps/gaze timestamps are a useful feature but not representative
+of the real PC timestamps, you can use this function to recompute their start based
+to a specific number.</p>
     
     </div>
 
@@ -133,7 +137,7 @@
     </tr>
     <tr>
       <th>start_time</th>
-      <td><p>needs %H:%M:%S parameter to be passed</p></td>
+      <td><p>numeric value to be substracted from timestamps</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -143,11 +147,11 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>As the world_timestamps are a useful feature but not representative
-of the real timestamps, you can use this function to recompute their start based
-of concrete number. Typically, thi is the start as is saved in the info.csv file
-in the recording. This function therefore takes that formated number a<!-- %H:%M:%S -->
-and recomputes the times in the wordl_timestamps so they start at given time</p>
+    <p>This functions basically zero-bases timestamps in various fields and saves the information inside
+<code>obj$info$start_timestamp</code>. This is to synchronize recordings from other sources. Typical use is
+transformation of the <em>Synced Time</em> and the real <em>Start Time</em> from the info file. The <code>info.csv</code> is not exported
+by default and you need to either copy it from the recording folder to the exported folder so the package
+can load it automatically with <code>load_folder</code>, or you can supply the start time yourself.</p>
     
 
   </div>

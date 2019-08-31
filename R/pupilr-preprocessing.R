@@ -20,6 +20,7 @@ change_timestamps_start <- function(obj, start_time, ...){
   UseMethod("change_timestamps_start")
 }
 
+#' Changes timestamps to a given start time
 #' @export
 change_timestamps_start.pupilr <- function(obj, start_time){
   gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
@@ -29,6 +30,7 @@ change_timestamps_start.pupilr <- function(obj, start_time){
   return(obj)
 }
 
+#' Changes timestamps to a given start time
 #' @export
 change_timestamps_start.surfaces <- function(obj, start_time){
   events <- change_events_timestamps(obj$events)
@@ -39,6 +41,7 @@ change_timestamps_start.surfaces <- function(obj, start_time){
   return(obj)
 }
 
+#' Changes timestamps to a given start time
 #' @export
 change_timestamps_start.surface.item <- function(obj, start_time){
   obj$data$gaze <- change_gaze_timestamps(obj$data$gaze, start_time)

@@ -23,6 +23,8 @@ reference:
   desc:
   contents:
   - '`change_timestamps_start`'
+  - '`change_timestamps_start.pupilr`'
+  - '`change_timestamps_start.surfaces`'
   - '`change_timestamps_start.surface.item`'
   - '`as.eyer`'
   - '`as.eyer.surface.item`'
