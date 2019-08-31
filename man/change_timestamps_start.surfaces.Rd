@@ -4,7 +4,8 @@
 \alias{change_timestamps_start.surfaces}
 \title{Changes timestamps to a given start time}
 \usage{
-\method{change_timestamps_start}{surfaces}(obj, start_time)
+\method{change_timestamps_start}{surfaces}(obj, start_time,
+  new_start_time = start_time)
 }
 \description{
 Changes timestamps to a given start time

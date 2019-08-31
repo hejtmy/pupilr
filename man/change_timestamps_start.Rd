@@ -4,24 +4,18 @@
 \alias{change_timestamps_start}
 \title{Changes timestamps to a given start time}
 \usage{
-change_timestamps_start(obj, start_time, ...)
+change_timestamps_start(obj, start_time, new_start_time = start_time,
+  ...)
 }
 \arguments{
 \item{obj}{object which timestamps should be recomputed}
 
 \item{start_time}{numeric value to be substracted from timestamps}
 
+\item{new_start_time}{numeric value to be inserted as the new start. Optional, \strong{defaults} to start_time}
+
 \item{...}{}
 }
 \description{
-As the world_timestamps/gaze timestamps are a useful feature but not representative
-of the real PC timestamps, you can use this function to recompute their start based
-to a specific number.
-}
-\details{
-This functions basically zero-bases timestamps in various fields and saves the information inside
-\code{obj$info$start_timestamp}. This is to synchronize recordings from other sources. Typical use is
-transformation of the \emph{Synced Time} and the real \emph{Start Time} from the info file. The \code{info.csv} is not exported
-by default and you need to either copy it from the recording folder to the exported folder so the package
-can load it automatically with \code{load_folder}, or you can supply the start time yourself.
+Zero bases timestamps (substracts \code{start_time}) and saves new start time information in the \code{obj$info$start_time}
 }

@@ -14,6 +14,13 @@ test_that("reseting times", {
   expect_equal(obj_new$info$start_time, 100)
   expect_equal(obj_new$surfaces$info$start_time, 100)
   expect_equal(obj_new$surfaces$items$unnamed$info$start_time, 100)
+
+  ## Setting new start time
+  expect_silent(obj_new <- change_timestamps_start(obj, obj$data$gaze$world_timestamp[1], 100))
+  expect_equal(obj_new$data$gaze$world_timestamp[1], 0)
+  expect_equal(obj_new$info$start_time, 100)
+  expect_equal(obj_new$surfaces$info$start_time, 100)
+  expect_equal(obj_new$surfaces$items$unnamed$info$start_time, 100)
 })
 
 test_that("filtering times", {

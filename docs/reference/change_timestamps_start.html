@@ -32,9 +32,7 @@
 
 <meta property="og:title" content="Changes timestamps to a given start time — change_timestamps_start" />
 
-<meta property="og:description" content="As the world_timestamps/gaze timestamps are a useful feature but not representative
-of the real PC timestamps, you can use this function to recompute their start based
-to a specific number." />
+<meta property="og:description" content="Zero bases timestamps (substracts start_time) and saves new start time information in the obj$info$start_time" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,13 +118,12 @@ to a specific number." />
 
     <div class="ref-description">
     
-    <p>As the world_timestamps/gaze timestamps are a useful feature but not representative
-of the real PC timestamps, you can use this function to recompute their start based
-to a specific number.</p>
+    <p>Zero bases timestamps (substracts <code>start_time</code>) and saves new start time information in the <code>obj$info$start_time</code></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>change_timestamps_start</span>(<span class='no'>obj</span>, <span class='no'>start_time</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>change_timestamps_start</span>(<span class='no'>obj</span>, <span class='no'>start_time</span>, <span class='kw'>new_start_time</span> <span class='kw'>=</span> <span class='no'>start_time</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,18 +137,14 @@ to a specific number.</p>
       <td><p>numeric value to be substracted from timestamps</p></td>
     </tr>
     <tr>
+      <th>new_start_time</th>
+      <td><p>numeric value to be inserted as the new start. Optional, <strong>defaults</strong> to start_time</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This functions basically zero-bases timestamps in various fields and saves the information inside
-<code>obj$info$start_timestamp</code>. This is to synchronize recordings from other sources. Typical use is
-transformation of the <em>Synced Time</em> and the real <em>Start Time</em> from the info file. The <code>info.csv</code> is not exported
-by default and you need to either copy it from the recording folder to the exported folder so the package
-can load it automatically with <code>load_folder</code>, or you can supply the start time yourself.</p>
     
 
   </div>
@@ -159,9 +152,7 @@ can load it automatically with <code>load_folder</code>, or you can supply the s
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

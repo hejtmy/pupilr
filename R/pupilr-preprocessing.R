@@ -1,53 +1,55 @@
 #' Changes timestamps to a given start time
 #'
-#' @description As the world_timestamps/gaze timestamps are a useful feature but not representative
+#' @description Zero bases timestamps (substracts `start_time`) and saves new start time information in the `obj$info$start_time`
+#'
+#' @detailsAs the world_timestamps/gaze timestamps are a useful feature but not representative
 #' of the real PC timestamps, you can use this function to recompute their start based
-#' to a specific number.
-#' @details This functions basically zero-bases timestamps in various fields and saves the information inside
-#' `obj$info$start_timestamp`. This is to synchronize recordings from other sources. Typical use is
+#' to a specific number. This functions zero-bases timestamps in various fields and saves the information inside
+#' `obj$info$start_time`. This is to synchronize recordings from other sources. Typical use is
 #' transformation of the *Synced Time* and the real *Start Time* from the info file. The `info.csv` is not exported
 #' by default and you need to either copy it from the recording folder to the exported folder so the package
 #' can load it automatically with `load_folder`, or you can supply the start time yourself.
 #' @param obj object which timestamps should be recomputed
 #' @param start_time numeric value to be substracted from timestamps
+#' @param new_start_time numeric value to be inserted as the new start. Optional, **defaults** to start_time
 #' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-change_timestamps_start <- function(obj, start_time, ...){
+change_timestamps_start <- function(obj, start_time, new_start_time = start_time, ...){
   UseMethod("change_timestamps_start")
 }
 
 #' Changes timestamps to a given start time
 #' @export
-change_timestamps_start.pupilr <- function(obj, start_time){
-  gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
-  fixations <- change_fixations_timestamps(obj$data$fixations, start_time)
-  obj$surfaces <- change_timestamps_start(obj$surfaces, start_time)
-  obj$info$start_time <- start_time
+change_timestamps_start.pupilr <- function(obj, start_time, new_start_time = start_time){
+  obj$data$gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
+  obj$data$fixations <- change_fixations_timestamps(obj$data$fixations, start_time)
+  obj$surfaces <- change_timestamps_start(obj$surfaces, start_time, new_start_time)
+  obj$info$start_time <- new_start_time
   return(obj)
 }
 
 #' Changes timestamps to a given start time
 #' @export
-change_timestamps_start.surfaces <- function(obj, start_time){
-  events <- change_events_timestamps(obj$events)
+change_timestamps_start.surfaces <- function(obj, start_time, new_start_time = start_time){
+  obj$data$events <- change_events_timestamps(obj$events)
   for (name in names(obj$items)){
-    obj$items[[name]] <- change_timestamps_start.surface.item(obj$items[[name]], start_time)
+    obj$items[[name]] <- change_timestamps_start.surface.item(obj$items[[name]], start_time, new_start_time)
   }
-  obj$info$start_time <- start_time
+  obj$info$start_time <- new_start_time
   return(obj)
 }
 
 #' Changes timestamps to a given start time
 #' @export
-change_timestamps_start.surface.item <- function(obj, start_time){
+change_timestamps_start.surface.item <- function(obj, start_time, new_start_time = start_time){
   obj$data$gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
   obj$data$fixations <- change_gaze_timestamps(obj$data$fixations, start_time)
   obj$data$positions <- change_gaze_timestamps(obj$data$positions, start_time)
-  obj$info$start_time <- start_time
+  obj$info$start_time <- new_start_time
   return(obj)
 }
 
