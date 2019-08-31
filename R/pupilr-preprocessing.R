@@ -162,7 +162,11 @@ as.eyer.surface.item <- function(obj, ...){
   eye$data$gaze <- surface_gaze_to_eyer_df(obj$data$gaze)
   eye$data$fixations <- surface_fixations_to_eyer_df(obj$data$fixations)
   eye$info$start_time <- ifelse(!is.null(obj$info$start_time), obj$info$start_time, obj$data$gaze$gaze_timestamp[1])
-  eye$info <- list()
+  if(is.null(obj$info)){
+    eye$info <- list()
+  } else{
+    eye$info <- obj$info
+  }
   eye$info$eyetracker <- EYETRACKER_NAME
   class(eye) <- append(class(eye), "eyer")
   return(eye)

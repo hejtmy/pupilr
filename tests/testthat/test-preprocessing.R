@@ -41,4 +41,9 @@ test_that("Eyer conversions", {
   eye <- as.eyer(obj)
   expect_s3_class(eye, "eyer")
   expect_s3_class(eye$surfaces$items$unnamed, "eyer")
+
+  ## Check if all data are transfered
+  obj_new <- change_timestamps_start(obj, 100)
+  expect_silent(eye <- as.eyer(obj_new$surfaces$items$unnamed))
+  expect_equal(eye$info$start_time, 100)
 })
