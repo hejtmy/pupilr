@@ -4,12 +4,10 @@
 \alias{as.eyer.surface.item}
 \title{Converts surface item to an eyer object}
 \usage{
-\method{as.eyer}{surface.item}(obj, ...)
+\method{as.eyer}{surface.item}(obj)
 }
 \arguments{
 \item{obj}{surface.item object}
-
-\item{...}{}
 }
 \value{
 EyerObject

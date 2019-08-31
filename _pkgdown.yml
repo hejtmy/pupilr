@@ -27,7 +27,9 @@ reference:
   - '`change_timestamps_start.surfaces`'
   - '`change_timestamps_start.surface.item`'
   - '`as.eyer`'
+  - '`as.eyer.pupilr`'
   - '`as.eyer.surface.item`'
+  - '`as.eyer.surfaces`'
   - '`remove_not_on_surface`'
   - '`remove_not_on_surface.surface`'
 - title: Getters
@@ -39,6 +41,3 @@ reference:
   - '`get_gaze_timewindow.surface.item`'
   - '`filter_times`'
   - '`filter_times.surface.item`'
-
-
-
