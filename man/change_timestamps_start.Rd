@@ -2,24 +2,26 @@
 % Please edit documentation in R/pupilr-preprocessing.R
 \name{change_timestamps_start}
 \alias{change_timestamps_start}
-\title{Allows changing of the world timestamps or real timestamps start to a specific time}
+\title{Changes timestamps to a given start time}
 \usage{
 change_timestamps_start(obj, start_time, ...)
 }
 \arguments{
 \item{obj}{object which timestamps should be recomputed}
 
-\item{start_time}{needs \%H:\%M:\%S parameter to be passed}
+\item{start_time}{numeric value to be substracted from timestamps}
 
 \item{...}{}
 }
 \description{
-Allows changing of the world timestamps or real timestamps start to a specific time
+As the world_timestamps/gaze timestamps are a useful feature but not representative
+of the real PC timestamps, you can use this function to recompute their start based
+to a specific number.
 }
 \details{
-As the world_timestamps are a useful feature but not representative
-of the real timestamps, you can use this function to recompute their start based
-of concrete number. Typically, thi is the start as is saved in the info.csv file
-in the recording. This function therefore takes that formated number a%H:%M:%S
-and recomputes the times in the wordl_timestamps so they start at given time
+This functions basically zero-bases timestamps in various fields and saves the information inside
+\code{obj$info$start_timestamp}. This is to synchronize recordings from other sources. Typical use is
+transformation of the \emph{Synced Time} and the real \emph{Start Time} from the info file. The \code{info.csv} is not exported
+by default and you need to either copy it from the recording folder to the exported folder so the package
+can load it automatically with \code{load_folder}, or you can supply the start time yourself.
 }

@@ -17,5 +17,6 @@ SurfaceObject:
 \itemize{
 \item data: data about all surfaces together
 \item items: list with named field for each surface containig `SurfaceItemObject``
+\item info: list with extra info, e.g. "start_time"
 }
 }

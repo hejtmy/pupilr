@@ -28,7 +28,7 @@ PupilrObject <- function(){
 #' SurfaceObject:
 #' - data: data about all surfaces together
 #' - items: list with named field for each surface containig `SurfaceItemObject``
-#'
+#' - info: list with extra info, e.g. "start_time"
 #' @return object of class `surfaces`
 #' @export
 #'
@@ -36,6 +36,7 @@ PupilrObject <- function(){
 SurfacesObject <- function(){
   ls <- list()
   ls$data <- list()
+  ls$info <- list(start_time = NA)
   ls$items <- list()
   class(ls) <-append(class(ls), "surfaces")
   return(ls)
@@ -47,6 +48,7 @@ SurfacesObject <- function(){
 #'
 #' SurfaceItemObject:
 #' - data: gaze, fixations and events for given surface
+#' - info: other relevant info (e.g. start time )
 #'
 #' @return object of class `surface.item`
 #' @export
@@ -55,6 +57,7 @@ SurfacesObject <- function(){
 SurfaceItemObject <- function(){
   ls <- list()
   ls$data <- list()
-  class(ls) <-append(class(ls), "surface.item")
+  ls$info <- list(start_time = NA)
+  class(ls) <- append(class(ls), "surface.item")
   return(ls)
 }

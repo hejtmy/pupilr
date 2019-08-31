@@ -1,13 +1,15 @@
-#' Allows changing of the world timestamps or real timestamps start to a specific time
+#' Changes timestamps to a given start time
 #'
-#' @details As the world_timestamps are a useful feature but not representative
-#' of the real timestamps, you can use this function to recompute their start based
-#' of concrete number. Typically, thi is the start as is saved in the info.csv file
-#' in the recording. This function therefore takes that formated number a%H:%M:%S
-#' and recomputes the times in the wordl_timestamps so they start at given time
-#'
+#' @description As the world_timestamps/gaze timestamps are a useful feature but not representative
+#' of the real PC timestamps, you can use this function to recompute their start based
+#' to a specific number.
+#' @details This functions basically zero-bases timestamps in various fields and saves the information inside
+#' `obj$info$start_timestamp`. This is to synchronize recordings from other sources. Typical use is
+#' transformation of the *Synced Time* and the real *Start Time* from the info file. The `info.csv` is not exported
+#' by default and you need to either copy it from the recording folder to the exported folder so the package
+#' can load it automatically with `load_folder`, or you can supply the start time yourself.
 #' @param obj object which timestamps should be recomputed
-#' @param start_time needs \%H:\%M:\%S parameter to be passed
+#' @param start_time numeric value to be substracted from timestamps
 #' @param ...
 #'
 #' @return
@@ -18,27 +20,31 @@ change_timestamps_start <- function(obj, start_time, ...){
   UseMethod("change_timestamps_start")
 }
 
-#' Allows changing of the world timestamps or real timestamps start to a specific time
-#'
-#' @details As the world_timestamps are a useful feature but not representative
-#' of the real timestamps, you can use this function to recompute their start based
-#' of concrete number. Typically, thi is the start as is saved in the info.csv file
-#' in the recording. This function therefore takes that formated number a%H:%M:%S
-#' and recomputes the times in the wordl_timestamps so they start at given time
-#'
-#' @param obj object which timestamps should be recomputed
-#' @param start_time needs \%H:\%M:\%OS parameter to be passed. see strptime for details
-#'
-#' @return
 #' @export
-#'
-#' @examples
+change_timestamps_start.pupilr <- function(obj, start_time){
+  gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
+  fixations <- change_fixations_timestamps(obj$data$fixations, start_time)
+  obj$surfaces <- change_timestamps_start(obj$surfaces, start_time)
+  obj$info$start_time <- start_time
+  return(obj)
+}
+
+#' @export
+change_timestamps_start.surfaces <- function(obj, start_time){
+  events <- change_events_timestamps(obj$events)
+  for (name in names(obj$items)){
+    obj$items[[name]] <- change_timestamps_start.surface.item(obj$items[[name]], start_time)
+  }
+  obj$info$start_time <- start_time
+  return(obj)
+}
+
+#' @export
 change_timestamps_start.surface.item <- function(obj, start_time){
-  timestamps <- obj$data$gaze$gaze_timestamp
-  first_timestamp <- timestamps[1]
-  time_since_midnight <- as.numeric(as.difftime(c(start_time, "0:0:0"), "%H:%M:%OS", units = "secs"))[1]
-  new_timestamps <- time_since_midnight + timestamps - first_timestamp
-  obj$data$gaze$gaze_timestamp <- new_timestamps
+  obj$data$gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
+  obj$data$fixations <- change_gaze_timestamps(obj$data$fixations, start_time)
+  obj$data$positions <- change_gaze_timestamps(obj$data$positions, start_time)
+  obj$info$start_time <- start_time
   return(obj)
 }
 
@@ -114,16 +120,17 @@ as.eyer <- function(obj, ...){
 
 #' @export
 as.eyer.pupilr <- function(obj, ...){
-  eye <- EyerObject()
-  eye$info$start_time <- obj$data$gaze$world_timestamp[1]
+  eye <- list()
   # Converts the main data
-  eye$data$gaze <- gaze_to_eyer_df(obj$data$gaze, eye$info$start_time)
-  eye$data$fixations <- fixations_to_eyer_df(obj$data$fixations, eye$info$start_time)
+  eye$data$gaze <- gaze_to_eyer_df(obj$data$gaze)
+  eye$data$fixations <- fixations_to_eyer_df(obj$data$fixations)
   # convects the surfaces
   eye$surfaces <- as.eyer.surfaces(obj$surfaces)
   eye$info <- obj$info
+  eye$info$start_time <- ifelse(!is.null(obj$info$start_time), obj$info$start_time, eye$data$gaze$time[1])
   eye$info$eyetracker <- EYETRACKER_NAME
   eye$export_info <- obj$export_info
+  class(eye) <- append(class(eye), "eyer")
   return(eye)
 }
 
@@ -145,18 +152,18 @@ as.eyer.surfaces <- function(obj, ...){
 #'
 #' @examples
 as.eyer.surface.item <- function(obj, ...){
-  eye <- EyerObject()
   #TODO - this might have to be redone
-  eye$info$start_time <- obj$data$gaze$gaze_timestamp[1]
-
-  eye$data$gaze <- surface_gaze_to_eyer_df(obj$data$gaze, eye$info$start_time)
-
-  eye$data$fixations <- surface_fixations_to_eyer_df(obj$data$fixations, eye$info$start_time)
+  eye <- list()
+  eye$data$gaze <- surface_gaze_to_eyer_df(obj$data$gaze)
+  eye$data$fixations <- surface_fixations_to_eyer_df(obj$data$fixations)
+  eye$info$start_time <- ifelse(!is.null(obj$info$start_time), obj$info$start_time, obj$data$gaze$gaze_timestamp[1])
+  eye$info <- list()
   eye$info$eyetracker <- EYETRACKER_NAME
+  class(eye) <- append(class(eye), "eyer")
   return(eye)
 }
 
-### NON PUBLIC -----
+## NON PUBLIC -----
 preprocess.surface.item <- function(obj, ...){
   prep_d <- function(df){
     df <- rename_column(df, c("on_surf", "on_srf"), "on_surface")
@@ -169,20 +176,39 @@ preprocess.surface.item <- function(obj, ...){
   return(obj)
 }
 
-gaze_to_eyer_df <- function(gaze, start_time){
+### Timestamp changes----
+change_gaze_timestamps <- function(gaze, start_time){
+  if(is.null(gaze) || nrow(gaze) == 0) return(gaze)
+  if("gaze_timestamp" %in% colnames(gaze)){
+    gaze$gaze_timestamp <- gaze$gaze_timestamp - start_time
+  }
+  if("world_timestamp" %in% colnames(gaze)){
+    gaze$world_timestamp <- gaze$world_timestamp - start_time
+  }
+  return(gaze)
+}
+change_fixations_timestamps <- function(fixations, start_time){
+  if(is.null(fixations) || nrow(fixations) == 0) return(fixations)
+  fixations$start_timestamp <- fixations$start_timestamp - start_time
+  return(fixations)
+}
+change_events_timestamps <- function(events, start_time){
+  if(is.null(events) || nrow(events) == 0) return(events)
+  events$world_timestamp <- events$world_timestamp-start_time
+  return(events)
+}
+### Eyer convetsions ----
+gaze_to_eyer_df <- function(gaze){
   if(is.null(gaze) || nrow(gaze) == 0) return(data.frame())
   gaze <- rename_column(gaze, "gaze_timestamp", "time") # in nwe versions this the name
   gaze <- rename_column(gaze, "world_timestamp", "time") # this is the name in old versions
-  gaze$time <- gaze$time - start_time
   gaze <- rename_column(gaze, "norm_pos_x", "x")
   gaze <- rename_column(gaze, "norm_pos_y", "y")
   gaze[, c(2, 6:length(colnames(gaze)))] <- NULL
   return(gaze)
 }
-
-fixations_to_eyer_df <- function(fixations, start_time){
+fixations_to_eyer_df <- function(fixations){
   if(is.null(fixations) || nrow(fixations) == 0) return(data.frame())
-  fixations$time <- fixations$start_timestamp - start_time
   fixations[, c("start_frame_index", "end_frame_index", "method",
                 "gaze_point_3d_x",	"gaze_point_3d_y",	"gaze_point_3d_z",
                 "base_data")] <- NULL
@@ -190,19 +216,17 @@ fixations_to_eyer_df <- function(fixations, start_time){
   fixations <- rename_column(fixations, "norm_pos_y", "y")
   return(fixations)
 }
-
-surface_gaze_to_eyer_df <- function(gaze, start_time){
+surface_gaze_to_eyer_df <- function(gaze){
   if(is.null(gaze) || nrow(gaze) == 0) return(data.frame())
-  gaze$time <- gaze$gaze_timestamp - start_time
   gaze <- rename_column(gaze, "x_norm", "x")
   gaze <- rename_column(gaze, "y_norm", "y")
-  gaze[, c("world_timestamp", "world_index", "gaze_timestamp")] <- NULL
+  gaze <- rename_column(gaze, "world_timestamp", "time")
+  gaze <- rename_column(gaze, "gaze_timestamp", "time")
+  gaze[, c("world_index", "gaze_timestamp")] <- NULL
   return(gaze)
 }
-
-surface_fixations_to_eyer_df <- function(fixations, start_time){
+surface_fixations_to_eyer_df <- function(fixations){
   if( is.null(fixations) || nrow(fixations) == 0) return(data.frame())
-  fixations$time <- fixations$start_timestamp - start_time
   fixations[, c("fixations_id", "start_timestamp")] <- NULL
   fixations <- rename_column(fixations, "norm_pos_x", "x")
   fixations <- rename_column(fixations, "norm_pos_y", "y")

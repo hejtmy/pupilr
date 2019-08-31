@@ -15,5 +15,6 @@ This object contains basic eye information about the particular surface.
 SurfaceItemObject:
 \itemize{
 \item data: gaze, fixations and events for given surface
+\item info: other relevant info (e.g. start time )
 }
 }

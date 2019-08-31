@@ -127,8 +127,8 @@ load_surface_data <- function(folder, preprocess = T){
   # POssible names have or don't have timestamps in them
   # fixations_on_surface_unnamed_1552524777.3223464.csv
   # fixations_on_surface_unnamed.csv
-  surfaces_names <- sub("fixations_on_surface_([^_]+)[_]?([1-9.]*?).csv", "\\1", surfaces, perl = T)
-  surfaces_times <- sub("fixations_on_surface_([^_]+)[_]?([1-9.]*?).csv", "\\2", surfaces, perl = T)
+  surfaces_names <- sub("fixations_on_surface_([^_]+)[_]?([0-9.]*?).csv", "\\1", surfaces, perl = T)
+  surfaces_times <- sub("fixations_on_surface_([^_]+)[_]?([0-9.]*?).csv", "\\2", surfaces, perl = T)
   for(i in 1:length(surfaces_names)){
     surface_name <- surfaces_names[i]
     surface_timestamp <- surfaces_times[i]
@@ -154,7 +154,7 @@ load_surface_data <- function(folder, preprocess = T){
     surface$data <- list(fixations = fixations,
                          gaze = gaze,
                          positions = positions)
-    surface$timestamp <- surface_timestamp
+    surface$info$file_timestamp <- surface_timestamp
     if(preprocess) surface <- preprocess.surface.item(surface)
 
     ls$items[[surface_name]] <- surface

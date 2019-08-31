@@ -4,8 +4,16 @@ sf <- open_surfaces(DIR)
 obj <- load_folder(DIR)
 
 test_that("reseting times", {
-  expect_silent(unnamed_new <- change_timestamps_start(sf$items$unnamed, "01:54:02"))
-  expect_silent(unnamed_new <- change_timestamps_start(sf$items$unnamed, "01:54:02.100"))
+  expect_silent(unnamed_new <- change_timestamps_start(sf$items$unnamed, 0))
+  expect_equal(unnamed_new$data$fixations, sf$items$unnamed$data$fixations)
+  expect_silent(unnamed_new <- change_timestamps_start(sf$items$unnamed, 100))
+  expect_s3_class(unnamed_new, "surface.item")
+  expect_equal(unnamed_new$info$start_time, 100)
+  expect_silent(obj_new <- change_timestamps_start(obj, 100))
+  expect_s3_class(obj_new, "pupilr")
+  expect_equal(obj_new$info$start_time, 100)
+  expect_equal(obj_new$surfaces$info$start_time, 100)
+  expect_equal(obj_new$surfaces$items$unnamed$info$start_time, 100)
 })
 
 test_that("filtering times", {
