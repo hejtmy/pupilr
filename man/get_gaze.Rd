@@ -9,6 +9,9 @@ get_gaze(obj, ...)
 \arguments{
 \item{...}{optional parameters}
 }
+\value{
+
+}
 \description{
 Returns gaze data.frame
 }

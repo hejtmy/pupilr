@@ -4,8 +4,7 @@
 \alias{change_timestamps_start}
 \title{Changes timestamps to a given start time}
 \usage{
-change_timestamps_start(obj, start_time, new_start_time = start_time,
-  ...)
+change_timestamps_start(obj, start_time, new_start_time = start_time, ...)
 }
 \arguments{
 \item{obj}{object which timestamps should be recomputed}
@@ -15,6 +14,9 @@ change_timestamps_start(obj, start_time, new_start_time = start_time,
 \item{new_start_time}{numeric value to be inserted as the new start. Optional, \strong{defaults} to start_time}
 
 \item{...}{}
+}
+\value{
+
 }
 \description{
 Zero bases timestamps (substracts \code{start_time}) and saves new start time information in the \code{obj$info$start_time}

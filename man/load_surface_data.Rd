@@ -11,6 +11,9 @@ load_surface_data(folder, preprocess = T)
 
 \item{preprocess:}{if the data should be immediately cleaned. default T. If set to false, some filtering and plotting functions will not work}
 }
+\value{
+
+}
 \description{
 Loads folder with surface data
 }

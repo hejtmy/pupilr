@@ -4,8 +4,7 @@
 \alias{get_gaze_timewindow.surface.item}
 \title{returns gaze data.frame between given times}
 \usage{
-\method{get_gaze_timewindow}{surface.item}(obj, start, end,
-  since_start = F, ...)
+\method{get_gaze_timewindow}{surface.item}(obj, start, end, since_start = F, ...)
 }
 \arguments{
 \item{obj}{surface object}

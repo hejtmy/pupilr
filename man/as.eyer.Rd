@@ -15,5 +15,5 @@ as.eyer(obj, ...)
 valid eyer object, list of eyer objects or NULL if it can't be converted
 }
 \description{
-Converts given object to an eyer object
+
 }

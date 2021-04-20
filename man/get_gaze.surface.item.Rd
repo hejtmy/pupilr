@@ -4,7 +4,7 @@
 \alias{get_gaze.surface.item}
 \title{Returns gaze data.frame from the surface object}
 \usage{
-\method{get_gaze}{surface.item}(obj, on_surface = T, ...)
+\method{get_gaze}{surface.item}(obj, on_surface = TRUE, ...)
 }
 \arguments{
 \item{obj}{surface object}

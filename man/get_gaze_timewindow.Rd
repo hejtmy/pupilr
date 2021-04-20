@@ -9,6 +9,9 @@ get_gaze_timewindow(obj, start, end, ...)
 \arguments{
 \item{obj}{}
 }
+\value{
+
+}
 \description{
 Returns
 }

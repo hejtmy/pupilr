@@ -15,6 +15,9 @@ filter_times(obj, start, end, ...)
 
 \item{...}{}
 }
+\value{
+
+}
 \description{
 Filters out object with only times between start and end
 }
