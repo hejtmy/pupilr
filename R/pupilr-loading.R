@@ -9,7 +9,14 @@
 load_folder <- function(folder){
   obj <- PupilrObject()
   obj$export_info <- open_expoted_info_file(folder)
-  obj$info <- open_info_file(folder)
+  info_file <-  open_info_file(folder)
+  if(is.null(info_file)){
+    warning("The package expects the info.csv from the original file to be present.
+            It contains some information about real time recording, dates etc.")
+    obj$info <- list()
+    } else {
+      obj$info <- info_file
+  }
   obj$data$gaze <- open_gaze_file(folder)
   obj$data$fixations <- open_fixations_file(folder)
   obj$surfaces <- open_surfaces(folder)
@@ -26,8 +33,8 @@ load_folder <- function(folder){
 #' @examples
 open_info_file <- function(folder){
   pth <- find_single_file(folder, "^info.csv$")
-  ls <- load_key_value_file(pth)
-  return(ls)
+  res <- load_key_value_file(pth)
+  return(res)
 }
 
 #' Finds and loads `exported_info.csv` file from given directory
@@ -39,9 +46,9 @@ open_info_file <- function(folder){
 #'
 #' @examples
 open_expoted_info_file <- function(folder){
-  pth <- find_single_file(folder, "_info.csv")
-  ls <- load_key_value_file(pth)
-  return(ls)
+  pth <- find_single_file(folder, "*_info.csv")
+  res <- load_key_value_file(pth)
+  return(res)
 }
 
 #' Retusns gaze positions data frame
