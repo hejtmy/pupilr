@@ -3,15 +3,16 @@ Type: Package
 Title: Working with Pupil labs eyetracker data in R
 Version: 0.1.2
 URL: https://github.com/hejtmy/pupilr
-Author: "Lukáš 'hejtmy' Hejtmánek""
+Author: "Lukáš 'hejtmy' Hejtmánek"
 Maintainer: Lukáš 'hejtmy' Hejtmánek <hejtmy@gmail.com>
 Description: Loading, preprocessing, visualising and exporting data recorded with
-    the pupil labs eyetracker. Depends on the hejtmy/eyer package for plotting 
+    the pupil labs eyetracker. Depends on the hejtmy/eyer package (hosted on github) 
+    for plotting
 License: MIT
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests: 
     testthat
 Depends: 
