@@ -7,10 +7,10 @@
 get_surface_names(obj)
 }
 \arguments{
-\item{obj}{}
+\item{obj}{pupilr object}
 }
 \value{
-
+character(0) if no surfaces are found or vector of character names
 }
 \description{
 Returns names of all surfaces in the object

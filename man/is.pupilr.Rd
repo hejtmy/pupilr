@@ -7,7 +7,7 @@
 is.pupilr(obj)
 }
 \arguments{
-\item{obj}{object}
+\item{obj}{object ot be evaluated}
 }
 \value{
 

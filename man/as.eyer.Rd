@@ -2,9 +2,18 @@
 % Please edit documentation in R/pupilr-preprocessing.R
 \name{as.eyer}
 \alias{as.eyer}
+\alias{as.eyer.pupilr}
+\alias{as.eyer.surfaces}
+\alias{as.eyer.surface.item}
 \title{Converts given object to an eyer object}
 \usage{
 as.eyer(obj, ...)
+
+\method{as.eyer}{pupilr}(obj, ...)
+
+\method{as.eyer}{surfaces}(obj, ...)
+
+\method{as.eyer}{surface.item}(obj)
 }
 \arguments{
 \item{obj}{Object to be converted}
@@ -17,3 +26,12 @@ valid eyer object, list of eyer objects or NULL if it can't be converted
 \description{
 
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{pupilr}: Converts pupilr object and all nested object to an eyer objects
+
+\item \code{surfaces}: Converts all nested surfaces objects to eyer objects
+
+\item \code{surface.item}: Converts surface item to an eyer object
+}}
+

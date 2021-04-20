@@ -5,6 +5,7 @@ reference:
   - '`PupilrObject`'
   - '`SurfaceItemObject`'
   - '`SurfacesObject`'
+  - '`is.pupilr`'
 - title: Loading
   desc: functions to load pupil data
   contents:
@@ -27,17 +28,17 @@ reference:
   - '`change_timestamps_start.surfaces`'
   - '`change_timestamps_start.surface.item`'
   - '`as.eyer`'
-  - '`as.eyer.pupilr`'
-  - '`as.eyer.surface.item`'
-  - '`as.eyer.surfaces`'
   - '`remove_not_on_surface`'
   - '`remove_not_on_surface.surface`'
 - title: Getters
   desc: Functions  to access parts of objects
   contents:
   - '`get_gaze`'
-  - '`get_gaze.surface.item`'
   - '`get_gaze_timewindow`'
-  - '`get_gaze_timewindow.surface.item`'
   - '`filter_times`'
-  - '`filter_times.surface.item`'
+  - '`get_surface_names`'
+  - '`get_surface`'
+- title: Visualisation
+  desc: Basic visualisation fuctions. For extendend functionality, use `eyer` package
+  contents:
+  - '`plot_gaze_data`'

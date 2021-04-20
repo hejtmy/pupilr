@@ -2,9 +2,12 @@
 % Please edit documentation in R/pupilr-preprocessing.R
 \name{filter_times}
 \alias{filter_times}
+\alias{filter_times.surface.item}
 \title{Filters out object with only times between start and end}
 \usage{
 filter_times(obj, start, end, ...)
+
+\method{filter_times}{surface.item}(obj, start, end, ...)
 }
 \arguments{
 \item{obj}{object to be modified}
@@ -13,7 +16,7 @@ filter_times(obj, start, end, ...)
 
 \item{end}{end time in seconds}
 
-\item{...}{}
+\item{...}{optional parameters just like in get_gaze_timewindow, get_fixations (e.g. on_surface)}
 }
 \value{
 
@@ -21,3 +24,8 @@ filter_times(obj, start, end, ...)
 \description{
 Filters out object with only times between start and end
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{surface.item}: filters gaze data in a surface.item
+}}
+

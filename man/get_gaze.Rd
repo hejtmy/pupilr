@@ -2,16 +2,30 @@
 % Please edit documentation in R/pupilr-getters.R
 \name{get_gaze}
 \alias{get_gaze}
+\alias{get_gaze.surface.item}
 \title{Returns gaze data.frame}
 \usage{
 get_gaze(obj, ...)
+
+\method{get_gaze}{surface.item}(obj, on_surface = TRUE)
 }
 \arguments{
+\item{obj}{pupilr or surface.item object}
+
 \item{...}{optional parameters}
+
+\item{on_surface}{should it only return those measurements on surface?}
 }
 \value{
-
+data.frame with gaze
 }
 \description{
 Returns gaze data.frame
+
+Returns gaze data.frame from the surface object
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{surface.item}: Gets gaze data from given surface item
+}}
+

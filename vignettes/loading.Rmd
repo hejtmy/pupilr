@@ -16,7 +16,46 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r}
+```{r, warning = FALSE}
 library(pupilr)
+eye <- load_folder("../tests/test-data")
+names(eye)
+class(eye)
+```
+```{r}
+head(eye$data$gaze[, 1:6])
+```
+
+
+### Surfaces
+
+Surfaces can be extracted from the entire object, or loaded on their own
+
+```{r}
+sf <- eye$surfaces
 sf <- open_surfaces("../tests/test-data")
+names(sf$items)
+```
+
+```{r}
+head(sf$data$events)
+```
+
+```{r}
+
+```
+
+### Conversion
+
+The conversion to eyer data format adds a class and does some transformations to the structure of the list and each data.frame with eye data, which is expected from the `eyer` package. Some information may be lost in the process.
+
+```{r}
+eyer_eye <- as.eyer(eye)
+
+class(eyer_eye)
+# all surfaces are converted as well
+class(eyer_eye$surfaces$items$unnamed)
+
+# Or you can convert a single surface 
+eyer_surface <- as.eyer(sf$items$unnamed)
 ```

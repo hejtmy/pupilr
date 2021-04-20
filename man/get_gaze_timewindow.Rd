@@ -2,16 +2,35 @@
 % Please edit documentation in R/pupilr-getters.R
 \name{get_gaze_timewindow}
 \alias{get_gaze_timewindow}
-\title{Returns}
+\alias{get_gaze_timewindow.surface.item}
+\title{Returns gaze data in a given timewindows}
 \usage{
 get_gaze_timewindow(obj, start, end, ...)
+
+\method{get_gaze_timewindow}{surface.item}(obj, start, end, since_start = F, ...)
 }
 \arguments{
-\item{obj}{}
+\item{obj}{pupilr or surface object}
+
+\item{start}{start time in seconds (numeric)}
+
+\item{end}{end time in seconds (numeric)}
+
+\item{...}{}
+
+\item{since_start}{defaults to false}
 }
 \value{
-
+gaze data.frame between given times
 }
 \description{
-Returns
+Returns gaze data in a given timewindows
+}
+\section{Methods (by class)}{
+\itemize{
+\item \code{surface.item}: implementation for the surface.item
+}}
+
+\examples{
+gaze <- get_gaze_timewindow(surface_object, 1000, 1200, on_surface = F)
 }
