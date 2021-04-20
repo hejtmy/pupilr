@@ -21,7 +21,7 @@ get_gaze <- function(obj, ...){
 #' @export
 #'
 #' @examples
-get_gaze.surface.item <- function(obj, on_surface = T, ...){
+get_gaze.surface.item <- function(obj, on_surface = TRUE, ...){
   gaze <- obj$data$gaze
   if(on_surface) gaze <- gaze[gaze$on_surface, ]
   return(gaze)
@@ -61,4 +61,42 @@ get_gaze_timewindow.surface.item <- function(obj, start, end, since_start = F, .
   if(since_start) timestamps <- timestamps - timestamps[1]
   gaze <- gaze[timestamps > start & timestamps < end, ]
   return(gaze)
+}
+
+#' Returns names of all surfaces in the object
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_surface_names <- function(obj){
+  if(is.null(obj$surfaces)) return(character(0))
+  return(names(obj$surfaces))
+}
+
+#' Returns sufface of a given name
+#'
+#' @param obj pupilr object
+#' @param surface_name name of the surface to be extracted
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_surface <- function(obj, surface_name){
+  return(obj$surfaces$items[[surface_name]])
+}
+
+#' Returns if the object has class pupilr
+#'
+#' @param obj object
+#'
+#' @return
+#' @export
+#'
+#' @examples
+is.pupilr <- function(obj){
+  return("pupilr" %in% class(obj))
 }
