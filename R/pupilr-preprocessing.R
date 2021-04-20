@@ -23,6 +23,7 @@ change_timestamps_start <- function(obj, start_time, new_start_time = start_time
 }
 
 #' Changes timestamps to a given start time
+#' @describeIn change_timestamps_start Changes timestamps in all available data (both main and surface data)
 #' @export
 change_timestamps_start.pupilr <- function(obj, start_time, new_start_time = start_time){
   obj$data$gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
@@ -32,7 +33,7 @@ change_timestamps_start.pupilr <- function(obj, start_time, new_start_time = sta
   return(obj)
 }
 
-#' Changes timestamps to a given start time
+#' @describeIn change_timestamps_start Changes timestamps in all sufaces
 #' @export
 change_timestamps_start.surfaces <- function(obj, start_time, new_start_time = start_time){
   obj$data$events <- change_events_timestamps(obj$events)
@@ -43,7 +44,7 @@ change_timestamps_start.surfaces <- function(obj, start_time, new_start_time = s
   return(obj)
 }
 
-#' Changes timestamps to a given start time
+#' @describeIn change_timestamps_start Changes timestamps in a given surface.item
 #' @export
 change_timestamps_start.surface.item <- function(obj, start_time, new_start_time = start_time){
   obj$data$gaze <- change_gaze_timestamps(obj$data$gaze, start_time)
@@ -80,7 +81,7 @@ remove_not_on_surface.surface <- function(obj){
 #' @param obj object to be modified
 #' @param start start time in seconds
 #' @param end end time in seconds
-#' @param ...
+#' @param ... optional parameters just like in get_gaze_timewindow, get_fixations (e.g. on_surface)
 #'
 #' @return
 #' @export
@@ -90,16 +91,8 @@ filter_times <- function(obj, start, end, ...){
   UseMethod("filter_times")
 }
 
-#' Filters out only times between start and end
-#'
-#' @param obj surface object
-#' @param start start time in seconds
-#' @param end end time in seconds
-#' @param ... optional parameters just like in get_gaze_timewindow, get_fixations (e.g. on_surface)
-#'
-#' @return surface object with filtered out times
-#' @export
-#'
+
+#' @describeIn filter_times filters gaze data in a surface.item
 #' @examples
 filter_times.surface.item <- function(obj, start, end, ...){
   gaze <- get_gaze_timewindow(obj, start, end, ...)
@@ -123,8 +116,7 @@ as.eyer <- function(obj, ...){
   UseMethod("as.eyer")
 }
 
-#' Converts pupilr object and all nested object to an eyer objects
-#' @param obj surface.item object
+#' @describeIn as.eyer Converts pupilr object and all nested object to an eyer objects
 #' @export
 as.eyer.pupilr <- function(obj, ...){
   eye <- list()
@@ -141,9 +133,7 @@ as.eyer.pupilr <- function(obj, ...){
   return(eye)
 }
 
-#' Converts all nested surfaces objects to eyer objects
-#' @param obj surface.item object
-#'
+#' @describeIn as.eyer Converts all nested surfaces objects to eyer objects
 #' @export
 as.eyer.surfaces <- function(obj, ...){
   for (name in names(obj$items)){
@@ -152,14 +142,8 @@ as.eyer.surfaces <- function(obj, ...){
   return(obj)
 }
 
-#' Converts surface item to an eyer object
-#'
-#' @param obj surface.item object
-#'
-#' @return EyerObject
+#' @describeIn as.eyer Converts surface item to an eyer object
 #' @export
-#'
-#' @examples
 as.eyer.surface.item <- function(obj){
   #TODO - this might have to be redone
   eye <- list()

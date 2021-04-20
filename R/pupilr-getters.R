@@ -1,9 +1,9 @@
 #' Returns gaze data.frame
 #'
-#' @param obj
+#' @param obj pupilr or surface.item object
 #' @param ... optional parameters
 #'
-#' @return
+#' @return data.frame with gaze
 #' @export
 #'
 #' @examples
@@ -11,27 +11,32 @@ get_gaze <- function(obj, ...){
   UseMethod("get_gaze")
 }
 
+get_gaze.pupilr <- function(obj){
+  return(obj$data$gaze)
+}
+
 #' Returns gaze data.frame from the surface object
 #'
-#' @param obj surface object
 #' @param on_surface should it only return those measurements on surface?
-#' @param ...
 #'
-#' @return data.frame with gaze
 #' @export
 #'
+#' @describeIn get_gaze Gets gaze data from given surface item
 #' @examples
-get_gaze.surface.item <- function(obj, on_surface = TRUE, ...){
+get_gaze.surface.item <- function(obj, on_surface = TRUE){
   gaze <- obj$data$gaze
   if(on_surface) gaze <- gaze[gaze$on_surface, ]
   return(gaze)
 }
 
-#' Returns
+#' Returns gaze data in a given timewindows
 #'
-#' @param obj
+#' @param obj pupilr or surface object
+#' @param start start time in seconds (numeric)
+#' @param end end time in seconds (numeric)
+#' @param ...
 #'
-#' @return
+#' @return gaze data.frame between given times
 #' @export
 #'
 #' @examples
@@ -40,16 +45,9 @@ get_gaze_timewindow <- function(obj, start, end, ...){
   UseMethod("get_gaze_timewindow")
 }
 
-#' returns gaze data.frame between given times
-#'
-#' @param obj surface object
-#' @param start start time in seconds (numeric)
-#' @param end end time in seconds (numeric)
 #' @param since_start defaults to false
-#' @param ... optional parameters, same as in get_gaze
-#'
-#' @return filtered data.frame
 #' @export
+#' @describeIn get_gaze_timewindow implementation for the surface.item
 #'
 #' @examples
 #' gaze <- get_gaze_timewindow(surface_object, 1000, 1200, on_surface = F)
@@ -65,9 +63,9 @@ get_gaze_timewindow.surface.item <- function(obj, start, end, since_start = F, .
 
 #' Returns names of all surfaces in the object
 #'
-#' @param obj
+#' @param obj pupilr object
 #'
-#' @return
+#' @return character(0) if no surfaces are found or vector of character names
 #' @export
 #'
 #' @examples
@@ -91,7 +89,7 @@ get_surface <- function(obj, surface_name){
 
 #' Returns if the object has class pupilr
 #'
-#' @param obj object
+#' @param obj object ot be evaluated
 #'
 #' @return
 #' @export
